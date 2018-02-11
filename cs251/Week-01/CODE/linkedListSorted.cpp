@@ -3,99 +3,85 @@
 
 using namespace std;
 
-
-struct NODE {
-    int val;
-    int inUse = 0;
-    struct NODE *next = nullptr;
+struct NODE
+{
+    int data;
+    NODE *next = NULL;
 };
 
 
-void populateList(struct NODE *lst, int val);
+void addToBack(NODE* & list, int val);
 
-void printList(struct NODE *lst);
+void printList(NODE* & pHead);
 
-//void listSorted(NODE *lst);
-
-
-
-int main()
+int main ()
 {
-    struct NODE *front = new struct NODE;
-    struct NODE *lst = front;
+    NODE * list = NULL;
+   
+    cout << "start adding numbes type -999 to stop " << endl;
+    int x;
+    while (true)
+    {
 
-    //asks and adds new nodes with random numbers
+        cout << ":> ";
+        cin >> x;
+        if (x == 0)
+            break;
 
-    srand(time(0));
-    int nodeNumber;
-    int randomNumber;
-    cout << "how many NODES in a linked list: ";
-    cin >> nodeNumber;
-    cout << endl << "you entered: " << nodeNumber << endl;
-
-
-    for (int i = 0; i < nodeNumber; i++) {
-        randomNumber = rand() % 50 + 1;
-
-       lst
-
-       cout << "val: " << lst->val;
-       cout << "   InUse: " << lst->inUse << endl;
+        addToBack(list, x);
     }
-  
     
-    
-    //populate the linked list
-    //populateList(lst, randomNumbert);
+ 
+    //prints out the list
+    printList(list);
 
-    //print list
-    printList(front);
-
-    //is it sorted ?
-   // listSorted(lst);
-
-    //delete list
-    delete lst;
-    delete front;
+    delete list;
     return 0;
 }
 
-void populateList(struct NODE *lst, int val)
+void addToBack(NODE * & list, int val)
 {
-    //checks if list is empty
-
-    struct NODE *pHead = lst;
-
-    if (pHead != nullptr) {
-        pHead->val = val;
-        pHead->inUse++;
-        pHead = pHead->next;
-    }else{
-    struct NODE *tmp = new struct NODE;
-    tmp->val = val;
-    tmp->inUse = pHead->inUse + 1;
-    pHead->next = tmp;
-    delete tmp;
+    //if list is empty
+    if(list == NULL){
+        list = new NODE;
+        list->data = val;
+        return;
     }
-    return;
-}
+   
+    //if list is not empty add to the last postion
+    NODE * newNode = new NODE;
+    NODE * pHead = list;
+
+    newNode->data = val;
 
 
-void printList(struct NODE *lst)
-{
-    while ( lst != nullptr)
+    while (true)
     {
-         cout << "\t" << lst->val << endl;
-         lst = lst->next;
+        if (pHead->next == NULL)
+        {
+            pHead->next = newNode;
+            break;
+        }
+        //moves along the list till last node
+        pHead = pHead->next;
     }
-
-    cout << "nullptr reached";
-    return;
+return;
 }
 
-/*
-void listSorted(NODE *lst)
+void printList(NODE * & list)
 {
-
+    NODE *pHead = list;
+    //checking if list is empty
+    if (pHead == NULL)
+    {
+        cout << "empty list" << endl;
+        return;
+    }
     
-}*/
+    //list not empty 
+    while (pHead != NULL)
+    {
+        cout << "\tdata: " << pHead->data << endl;
+        pHead = pHead->next;
+    }
+}
