@@ -6,14 +6,14 @@ using namespace std;
 
 struct NODE {
     int val;
-    int size = 5;
-    NODE *next;
+    int inUse = 0;
+    struct NODE *next = nullptr;
 };
 
 
-void populateList(NODE *lst);
+void populateList(struct NODE *lst, int val);
 
-////oid printList(NODE *lst);
+void printList(struct NODE *lst);
 
 //void listSorted(NODE *lst);
 
@@ -21,55 +21,79 @@ void populateList(NODE *lst);
 
 int main()
 {
-    struct NODE *lst = new struct NODE;
+    struct NODE *front = new struct NODE;
+    struct NODE *lst = front;
+
+    //asks and adds new nodes with random numbers
+
+    srand(time(0));
+    int nodeNumber;
+    int randomNumber;
+    cout << "how many NODES in a linked list: ";
+    cin >> nodeNumber;
+    cout << endl << "you entered: " << nodeNumber << endl;
 
 
+    for (int i = 0; i < nodeNumber; i++) {
+        randomNumber = rand() % 50 + 1;
+
+       lst
+
+       cout << "val: " << lst->val;
+       cout << "   InUse: " << lst->inUse << endl;
+    }
+  
+    
+    
     //populate the linked list
-    populateList(lst);
+    //populateList(lst, randomNumbert);
 
     //print list
-    //printList(lst);
+    printList(front);
 
     //is it sorted ?
    // listSorted(lst);
 
     //delete list
     delete lst;
+    delete front;
     return 0;
 }
 
-void populateList(NODE *lst)
+void populateList(struct NODE *lst, int val)
 {
-    srand(time(0));
-    //populating list 
-    while (lst != NULL)
-    {
-        int n = 0;
-        n = n + 1;
-        
-        lst->val = rand() % 50 + 1; // +1 sor its between 1-50 not 0 - 49
-        cout << endl << "value: " << lst->val << endl;
+    //checks if list is empty
 
-        lst = lst->next;
-             
-        //adds next node 
-        if (n < 5)
-        {
-            
-            lst = new struct NODE;    //creates and allocates memory for new NODE
-         
-        }
+    struct NODE *pHead = lst;
+
+    if (pHead != nullptr) {
+        pHead->val = val;
+        pHead->inUse++;
+        pHead = pHead->next;
+    }else{
+    struct NODE *tmp = new struct NODE;
+    tmp->val = val;
+    tmp->inUse = pHead->inUse + 1;
+    pHead->next = tmp;
+    delete tmp;
     }
     return;
 }
 
-/*
-void printList(NODE *lst)
-{
 
-    
+void printList(struct NODE *lst)
+{
+    while ( lst != nullptr)
+    {
+         cout << "\t" << lst->val << endl;
+         lst = lst->next;
+    }
+
+    cout << "nullptr reached";
+    return;
 }
 
+/*
 void listSorted(NODE *lst)
 {
 
