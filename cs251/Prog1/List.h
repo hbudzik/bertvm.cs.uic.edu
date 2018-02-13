@@ -69,7 +69,7 @@ class List
      * TODO
      *
      * function: length
-     * desc:  returns the length of the calling list
+     * desc:  returns the length of the c alling list
      *        
      * REQUIREMENTS:  this is a working implementation, but
      *   it takes linear time.
