@@ -4,7 +4,7 @@
 #include <algorithm>
 #include <iostream>
 
-// using namespace std;
+using namespace std;
 
 template <typename T>
 class List
@@ -207,6 +207,16 @@ class List
      *    of the list.)
      */
     int count(const T &x) const {
+        Node *p = front;
+        int counter=0;
+
+        while (p!=nullptr){
+          if (p->data == x){
+            counter++;  //increments
+          }
+          p = p->next;
+        }
+      cout << counter << endl;  
       return 0; 
     }
 
@@ -241,10 +251,30 @@ class List
      *    and len1 and len2 are the respective lengths of the two lists.
      **/
     bool equal_to(const List<T> &other) const {
+      //checks if both lists are equal in length
+    Node *p = front;
+    Node *o = other.front;
 
-      return false;  // placeholder
+    if (this->length() == other.length())
+    {
+        while(p!=nullptr)
+        {
+          if(p->data != o->data)
+          {
+            cout << "lists are NOT same size" << endl;
+            break;
+          }
+              cout << "test value o: " << o->data << endl;
 
+          p = p->next;
+          o = o->next;
+         }
+      cout << "lists are SAME size" << endl;
+      return true;
     }
+    cout << "lists are NOT same size" << endl;
+    return false;  // placeholder
+}
 
     /**
      * TODO:  print in reverse order 

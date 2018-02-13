@@ -8,6 +8,9 @@
         "iostream": "cpp",
         "ostream": "cpp",
         "xiosbase": "cpp",
-        "xlocale": "cpp"
+        "xlocale": "cpp",
+        "xutility": "cpp",
+        "system_error": "cpp",
+        "xtr1common": "cpp"
     }
 }
