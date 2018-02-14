@@ -287,7 +287,7 @@ class List
           }
             
 
-          p = p->next;
+          p = p->next;dfs
           o = o->next;
          }
  

@@ -91,8 +91,20 @@ int main(int argc, char *argv[]){
 
 
   //will count number of occurences of x in nodes in each list
-  cout << "List has this mandy 1s:\t";
-  list->count(1);
+  List<int> * fiveZ = new List<int>();
+  fiveZ->push_front(1);
+  fiveZ->push_front(0);
+  fiveZ->push_front(0);
+  fiveZ->push_front(3);
+  fiveZ->push_front(0);
+  fiveZ->push_front(0);
+  fiveZ->push_front(3);
+  fiveZ->push_front(44);
+
+
+
+  cout << "fiveZ has this mandy 0s:\t";
+  fiveZ->count(44);
   cout << "list2 has this many aa:\t";
   list2->count("aa");
   cout << "list3 has this many bb:\t"; 
