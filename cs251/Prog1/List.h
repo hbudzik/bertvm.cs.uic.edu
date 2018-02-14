@@ -282,18 +282,18 @@ class List
         {
           if(p->data != o->data)
           {
-            cout << "lists are NOT same size" << endl;
+           
             return false;
           }
-              cout << "test value o: " << o->data << endl;
+            
 
           p = p->next;
           o = o->next;
          }
-      cout << "lists are SAME size" << endl;
+ 
       return true;
     }
-    cout << "lists are NOT same size" << endl;
+  
     return false;  // placeholder
 }
 
