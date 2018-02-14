@@ -204,7 +204,30 @@ List<int> *list7 = new List<int>();
 
 
   //clonin a list
-  cout << "TESTING clone() function" << endl;
+  List<int> *list8 = new List<int>();
+   list8->push_front(2);
+  list8->push_front(2);
+  list8->push_front(3);
+  List<int> *list9 = new List<int>();
+   list9->push_front(0);
+  list9->push_front(3);
+  list9->push_front(1);
+  cout << "TESTING merge_with() function" << endl;
+  cout << "list 8: ";
+  list8->print();
+  cout << endl;
+  cout << "list 9: ";
+  list9->print();
+  cout << endl;
+ list8->merge_with(*list9);
+ cout << "AFTER MERGE: " << endl;
+ cout << "list 8: ";
+  list8->print();
+  cout << endl;
+  cout << "list 9: ";
+  list9->print();
+  cout << endl;
+  
   
 
   // list2->front = NULL;

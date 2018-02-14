@@ -492,7 +492,13 @@ class List
      * 	nodes.
      */
     void merge_with(List<T> &other){
+      Node *tf = this->front;
 
+      this->back->next = other.front;
+      this->back = other.back;
+
+      other.front = nullptr;
+      other.back = other.front;     
     }
 
     /**
