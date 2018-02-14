@@ -235,8 +235,29 @@ class List
      *
      */
     bool pop_back(T &data) {
+      Node *p = front;
+     
 
-      return false;
+      if (p==nullptr){
+        cout << "p == nullptr " << endl;
+        return false;     //list empty do nothing return false
+      }
+
+      //traverse the list to the end
+      while ( p->next != back)
+      {
+        p=p->next;
+      }
+
+      //assign value of last node to parameter data before deleting node
+      data = back->data;
+
+      //delete last node and assigne it to prev node
+      delete back;
+      back = p;   
+      back->next = nullptr;  
+
+    return true;
 
     }
 
@@ -262,7 +283,7 @@ class List
           if(p->data != o->data)
           {
             cout << "lists are NOT same size" << endl;
-            break;
+            return false;
           }
               cout << "test value o: " << o->data << endl;
 
@@ -286,8 +307,9 @@ class List
      *    of the list.)
      */
     void print_rev() const {
-
-
+      
+      //helper function 
+      printListReverse_R(front);
     }
 
     /* TODO
@@ -299,8 +321,30 @@ class List
      *    of the list.)
      */
     void reverse() {
+      
+      Node *p = front;
 
+      //checks if list is empty 
+      if(p == nullptr) {return;}
 
+      //changes the back pointer to the front of the list before rearranging the node pointers
+      back = front;
+
+      //assigning new pointers for node next pointer rearangments
+      Node *prevNode = NULL;
+      Node *nextNode = NULL;
+      
+      
+
+      //here we will change where the node is pointing and move up to the next one and do the same till we reach null 
+      while(p != NULL){
+          nextNode = p->next;
+          p->next = prevNode;
+          prevNode = p;
+          p = nextNode;
+      }
+      // now let the head point at the last node (prevNode)
+      front = prevNode;     
     }
 
 
@@ -317,7 +361,30 @@ class List
      *   iteratieve.
      **/
     int fast_remove_all(const T &x) {
-      return 0;
+        Node *p = front;
+        Node *tmp;
+        T dummy;
+        if(p==nullptr) 
+          return 0;
+
+
+        if(p->data == x) {
+        pop_front(dummy);
+        return 0;
+        }
+            while(p->next != nullptr) 
+            {
+              if(x == p->next->data) 
+              {
+                tmp = p->next;
+                p->next = p->next->next;
+                
+              }
+              delete tmp;
+              p=p->next;
+            } 
+            back = p;           
+    return 0;
     }
 
     /** TODO
@@ -338,7 +405,48 @@ class List
      *   O(n) runtime
      */
     void insert_sorted(const T &x) {
+      
+   
 
+      
+      //creating and assigning new node
+      Node *newNode = new Node;
+      newNode->data = x;
+
+      //if first node value is larger than new value
+      if (x <= front->data)
+      {
+        newNode->next = front;
+        front = newNode;
+        return;
+      }
+
+      Node *p = front;
+      Node *b = back;
+      while(true)
+      {
+
+        //if adding at the very end
+        if(b->data <= x)
+        {
+               
+          b->next = newNode;
+          newNode->next == nullptr;
+          back = newNode;
+
+          return;
+        }
+
+        if (x <= p->next->data){
+          //adding new node
+          newNode->next = p->next;
+          p->next = newNode;
+          break;
+        }
+        
+        //traverses the list
+        p = p->next;
+      }
     }
 
     /** TODO
@@ -399,7 +507,8 @@ class List
      *
      */
     List<T> * clone() const {
-
+  
+    
       return nullptr;
 
     }
@@ -571,7 +680,12 @@ class List
         std::cerr << "\n          list unchanged\n";
         return;
       }
-      std::cout << "List::concat(): no error...\n";
+      
+      this->back->next = other.front;
+      this->back = other.back;
+
+      other.front = nullptr;
+      other.back = other.front;
     }
 
 
@@ -648,6 +762,33 @@ class List
      */
     int compare_with(const List<T> &other) const {
 
+      Node *l1 = this->front;
+      Node *l2 = other.front;
+
+        if(this == &other) {
+        std::cerr << "warning:  List::compare_with():  calling object same as parameter";
+        std::cerr << "\n          same list\n";
+        return 0;
+      }
+
+
+       //if the two lists are identical, 0 is returned.
+        while(true)
+        { 
+          //checks if this list 
+          if (l1->data < l2->data){
+            return -1;  //this is lexically smaller
+          }else if (l1->data > l2->data){
+            return 1;  //other is lexically smaller
+          }else if (this->back->data == other.back->data){
+
+            return 0;  //lexically the same
+          }
+          
+          //moves to another set of nodes for comparison 
+        l1 = l1->next;
+        l2 = l2->next;
+        }
       return 0;
 
     }
@@ -695,6 +836,21 @@ class List
       front = nullptr;
       back = nullptr;
     }
+
+    void printListReverse_R(const Node * p) const
+    {
+        //base case
+        if (p == nullptr)
+        {
+            return;
+        }
+      
+        printListReverse_R(p->next);
+        //prints after calling recursive function 
+        cout << " " << p->data;
+    }
+
+
 };
 
 #endif

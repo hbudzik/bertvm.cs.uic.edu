@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <string>
+#include <ctime>  //for srand seed
 
 using namespace std;
 
@@ -16,12 +17,23 @@ int main(int argc, char *argv[]){
   List<int> *list = new List<int>();
   List<string> *list2 = new List<string>();
   List<string> *list3 = new List<string>();
+  
+  //test lists
+  List<int> * listTest2 = new List<int>();
+  listTest2->push_front(9);
+  listTest2->push_front(7);
+  listTest2->push_front(5);
+  listTest2->push_front(3);
+  listTest2->push_front(1);
 
 
   List<string> *testList = new List<string>();
   testList->push_front("xx");
   testList->push_back("yy");
   testList->push_back("zz");
+
+
+
 
   int x;
   int n, ndel;
@@ -32,10 +44,17 @@ int main(int argc, char *argv[]){
     n = atoi(argv[1]);
   }
 
+  srand(time(0));   // for random rand()
 
-  for(x=1; x<=4; x++) {
-    list->push_front(x);
-  }
+    list->push_front(rand() % 5 +1);
+    list->push_front(rand() % 5 +1);
+    list->push_front(rand() % 5 +1);
+    list->push_front(rand() % 5 +1);
+    list->push_front(rand() % 5 +1);
+    list->push_front(rand() % 5 +1);
+    list->push_front(rand() % 5 +1);
+    list->push_front(rand() % 5 +1);
+
   list->print();
 
   for(x=1; x<=4; x++) {
@@ -81,7 +100,100 @@ int main(int argc, char *argv[]){
 
   //will check if two lists are equal, equal_to() function
   list->equal_to(*list);
-  //list->equal_to(*list);
+  list2->equal_to(*list3);
+
+  //popping back NODE 
+  int newData;
+  cout << endl << "popping back NODE: pop_back " << endl;
+  cout << "current list: ";
+  list->print();
+  
+  if (list->pop_back(newData) == true){
+    cout << "removed back node" << endl;
+    cout << "data stored: " << newData << endl;
+  }else{
+    cout << "remove did not happen" << endl;
+  }
+  cout << "list after popped value: " << endl; 
+  list->print();
+  
+  //printing in reverse recursively 
+  cout << endl << "Printing list in reverse RECURSIVLY!" << endl;
+  list->print_rev();
+ 
+
+  //here will reverse the list print it without assigning new memory 
+  cout << endl << "PRINTING LIST original: " << endl;
+  list->print();
+  cout << endl << "PRINTING LIST AFTER reverse() FUNCT, reversing the list" << endl;
+  list->reverse();
+  list->print();
+  
+  // fast_remove_all(x);
+  cout << "TESTING fast_remove_all(1)" << endl;
+  list->fast_remove_all(1);
+  list->print();
+
+
+  // insert_sorted(sortedList)
+  cout << "TESTING insert_sorted(sortedList)" << endl;
+  cout << "original: ";
+  listTest2->print();
+  cout << endl << "adding 5: ";
+  listTest2->insert_sorted(6);
+  listTest2->print();
+  listTest2->insert_sorted(-22);
+  listTest2->print();
+  listTest2->insert_sorted(66);
+
+  listTest2->print();
+
+  cout << endl;
+
+  //will test concat() function
+  cout << "TESTING concat(list) " << endl;
+  cout << "list2: ";
+  list2->print();
+  cout << endl << "list3: ";
+  list3->print();
+  cout << endl << "list2.concat(list3): ";
+  list2->concat(*list3);
+  cout << endl << "after concat list2 ";
+  list2->print();
+   cout << endl << "after concat list3 ";
+  list3->print();
+
+  //testing compare_with
+List<int> *list5 = new List<int>();
+
+  list5->push_front(2);
+  list5->push_front(2);
+  list5->push_front(2);
+List<int> *list6 = new List<int>();
+  list6->push_front(1);
+  list6->push_front(1);
+  list6->push_front(1);
+List<int> *list7 = new List<int>();
+  list7->push_front(2);
+  list7->push_front(2);
+  list7->push_front(2);
+
+
+  cout << "TESTING compare_with(list) " << endl;
+  int out = list5->compare_with(*list6);
+  if (out == 0)
+  {
+      cout << "IDENTICAL LISTS" << endl;
+  }else if ( out == 1){
+      cout << "other list is lexically before calling list" << endl;
+  }else if ( out == -1){
+      cout << "calling list is lexically before other list" << endl;
+  }
+
+
+  //clonin a list
+  cout << "TESTING clone() function" << endl;
+  
 
   // list2->front = NULL;
   
