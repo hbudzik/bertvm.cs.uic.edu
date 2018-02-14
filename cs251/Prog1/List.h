@@ -16,6 +16,7 @@ class List
     {
       T      data;
       Node   *next;
+      int bookkeeping =0;
 
       Node( const T & d = T{}, Node * n = nullptr)
         : data{ d },  next{ n } { }
@@ -119,6 +120,7 @@ class List
 
     void push_front(const T & data) {
       front = new Node(data, front);
+      front->bookkeeping++;
 
       if(back == nullptr)
         back = front;
@@ -131,6 +133,8 @@ class List
         return false;
       val = front->data;
 
+      front->bookkeeping--;
+
       tmp = front;
       front = front->next;
       delete tmp;
@@ -141,6 +145,7 @@ class List
 
     void push_back(const T & val) {
       Node *tmp = new Node(val, nullptr);
+      
 
       if(front == nullptr) {
         front = back = tmp;
@@ -160,6 +165,7 @@ class List
         pop_front(dummy);
         return true;
       }
+      front->bookkeeping--;
       p = front;
       while(p->next != nullptr) {
         if(x == p->next->data) {

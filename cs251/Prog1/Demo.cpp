@@ -205,15 +205,20 @@ List<int> *list7 = new List<int>();
 
   //clonin a list
   List<int> *list8 = new List<int>();
-  /*
+  
    list8->push_front(2);
-  list8->push_front(2);
+  list8->push_front(7);
   list8->push_front(3);
-  */
+  list8->push_front(12);
+  list8->push_front(22);
+ 
   List<int> *list9 = new List<int>();
    list9->push_front(0);
   list9->push_front(3);
   list9->push_front(1);
+   list9->push_front(34);
+    list9->push_front(10);
+
   cout << "TESTING merge_with() function" << endl;
   cout << "list 8: ";
   list8->print();
@@ -230,6 +235,8 @@ List<int> *list7 = new List<int>();
   list9->print();
   cout << endl;
   
+  list9->push_back(99);
+  list9->print();
   
 
   // list2->front = NULL;
