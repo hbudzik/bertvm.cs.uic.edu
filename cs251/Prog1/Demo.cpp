@@ -237,8 +237,18 @@ List<int> *list7 = new List<int>();
   
   list9->push_back(99);
   list9->print();
-  
 
+
+  //list for cloning
+  List<int> *p;
+    cout << "TESTING clone() function " << endl;
+    cout << "List->print(): \t";
+    list->print();
+    cout<< "List clone: \t";
+    p =list->clone();
+    p->print();
+  
+  
   // list2->front = NULL;
   
 

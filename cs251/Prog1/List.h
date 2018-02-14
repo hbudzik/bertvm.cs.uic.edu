@@ -538,10 +538,19 @@ class List
      *
      */
     List<T> * clone() const {
-  
-    
-      return nullptr;
+      Node *p = front;
+      //creates a pointer to a List<T>
+      List<int> *newCopy = new List<int>();
 
+      //deep copies lists
+      while (p!=nullptr)
+      {
+        newCopy->push_back(p->data);
+
+        //traverse the list untill NULL is reached
+        p=p->next;
+      } 
+    return newCopy;
     }
 
     /**
