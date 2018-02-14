@@ -131,7 +131,7 @@ int main(int argc, char *argv[]){
   
   // fast_remove_all(x);
   cout << "TESTING fast_remove_all(1)" << endl;
-  list->fast_remove_all(1);
+  //list->fast_remove_all(1);
   list->print();
 
 
