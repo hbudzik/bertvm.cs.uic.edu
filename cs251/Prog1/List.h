@@ -217,7 +217,7 @@ class List
           p = p->next;
         }
       cout << counter << endl;  
-      return 0; 
+      return counter; 
     }
 
     /* TODO 
