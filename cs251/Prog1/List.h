@@ -216,7 +216,7 @@ class List
           }
           p = p->next;
         }
-      cout << counter << endl;  
+      
       return counter; 
     }
 
