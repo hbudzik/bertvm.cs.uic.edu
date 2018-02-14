@@ -205,9 +205,11 @@ List<int> *list7 = new List<int>();
 
   //clonin a list
   List<int> *list8 = new List<int>();
+  /*
    list8->push_front(2);
   list8->push_front(2);
   list8->push_front(3);
+  */
   List<int> *list9 = new List<int>();
    list9->push_front(0);
   list9->push_front(3);

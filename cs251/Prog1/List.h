@@ -492,13 +492,32 @@ class List
      * 	nodes.
      */
     void merge_with(List<T> &other){
-      Node *tf = this->front;
 
+      //if this list is empty
+      if (this->front == nullptr)
+      {
+        this->front = other.front;
+        this->back = other.back;
+
+      other.front = nullptr;
+      other.back = other.front; 
+      return;
+      }
+
+      //if this list is empty
+      if (other.front == nullptr)
+      {
+      //do nothing
+      return;
+      }
+
+      
       this->back->next = other.front;
       this->back = other.back;
 
       other.front = nullptr;
-      other.back = other.front;     
+      other.back = other.front;    
+      return; 
     }
 
     /**
