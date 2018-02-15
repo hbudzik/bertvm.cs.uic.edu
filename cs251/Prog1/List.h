@@ -620,9 +620,23 @@ class List
      *		               re-used from the calling list).
      */
     List<T> * prefix(unsigned int k) {
+      Node *p = new Node;
+      List<int> * returnList = new List<int>();
+      
+      int counter = 1;
+      while (counter <= k)
+      {
+        //deep copy prefix list
+        returnList->push_back(p->data);
+        
+        //moves up the list
+        p=p->next;
 
-      return nullptr;
+        //keeps hwo many to prefix
+        counter++;
+      }
 
+      return returnList;
     }
 
     /**

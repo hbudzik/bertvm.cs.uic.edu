@@ -247,10 +247,31 @@ List<int> *list7 = new List<int>();
     cout<< "List clone: \t";
     p =list->clone();
     p->print();
-  
-  
-  // list2->front = NULL;
-  
+
+//+-----------------------------------------
+//| Module:       prefix
+//|
+//| Description:  removes the first k elements from the
+//|               calling list which are used to form a new list
+//|               which is then returned.
+//|
+//| boundry cond: *if k==0:
+//|			          calling list unchanged and an empty list returned
+//|	    	        *if k>=n:
+//| 		          calling becomes empty and a list containing
+//|		            all elements previously in lst is returned.
+//|
+//+-----------------------------------------
+
+  cout << "testing prefix function now " << endl;
+  cout << "will cut first 3 nodes, and return prefix list as newList" << endl;
+  List<int> * pre = list->prefix(3);
+  cout << "after call: \n"
+    		   "list: ";
+           list->print();
+           pre->print();
+
+  // list2->front = NULL;  
 
   delete list;
   delete list2;
@@ -266,6 +287,8 @@ List<int> *list7 = new List<int>();
   cout << "slow_remove_all done!" << endl;
   cout << "    num-deleted:    " << ndel << endl;
   cout << "    list-len after: " << list->length()   << endl;
+
+  
 
   delete list;
 
