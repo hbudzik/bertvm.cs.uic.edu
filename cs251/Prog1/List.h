@@ -25,6 +25,8 @@ class List
 
 
   public:
+
+
     // constructors
     List( ) { 
       init( );
@@ -33,6 +35,24 @@ class List
     ~List( ) {
       clear( );
     }
+
+      void setBplus(){
+      bookkeeping++;
+    }
+
+    void setBminus(){
+      bookkeeping--;
+    }
+
+    int getB(){
+      return bookkeeping;
+    }
+
+    int setBvalue(int x)
+    {
+      bookkeeping = x;
+    }
+
     /**
      * Disclaimer:  C++ conventions tell us that we should have a couple
      * of additional constructors here (a copy constructor, assignment operator
@@ -89,7 +109,7 @@ class List
     int length( ) const {
 
       cout << "inside length functiong" << endl;
-      return bookkeeping;
+      return this->bookkeeping;
       Node *p = front;
       int n=0;
 
@@ -123,7 +143,7 @@ class List
 
     void push_front(const T & data) {
       front = new Node(data, front);
-      bookkeeping++;
+      setBplus();
 
       if(back == nullptr)
         back = front;
@@ -136,7 +156,7 @@ class List
         return false;
       val = front->data;
 
-      bookkeeping--;
+      setBminus();
 
       tmp = front;
       front = front->next;
@@ -148,8 +168,8 @@ class List
 
     void push_back(const T & val) {
       Node *tmp = new Node(val, nullptr);
+      setBplus();
       
-      bookkeeping++;
       if(front == nullptr) {
         front = back = tmp;
       }
@@ -165,10 +185,11 @@ class List
 
       if(front==nullptr) return false;
       if(front->data == x) {
+        
         pop_front(dummy);
         return true;
       }
-      bookkeeping--;
+      setBminus();
       p = front;
       while(p->next != nullptr) {
         if(x == p->next->data) {
@@ -245,13 +266,15 @@ class List
      */
     bool pop_back(T &data) {
       Node *p = front;
-     
+      Node *b = back;
+      
 
       if (p==nullptr){
         cout << "p == nullptr " << endl;
         return false;     //list empty do nothing return false
       }
 
+      setBminus();
       //traverse the list to the end
       while ( p->next != back)
       {
@@ -259,12 +282,12 @@ class List
       }
 
       //assign value of last node to parameter data before deleting node
-      data = back->data;
+      data = b->data;
 
       //delete last node and assigne it to prev node
       delete back;
-      back = p;   
-      back->next = nullptr;  
+      b = p;   
+      b->next = nullptr;  
 
     return true;
 
@@ -286,10 +309,10 @@ class List
     Node *o = other.front;
 
     //checks if list is only with one variable 
-    if ((o->next == nullptr ) && (p->next != nullptr))
+    /*if ((o->next == nullptr ) && (p->next != nullptr))
       {
         return false;
-      }
+      }*/
 
     if (this->length() == other.length())
     {
@@ -380,6 +403,7 @@ class List
 
 
         if(p->data == x) {
+          setBminus();
         pop_front(dummy);
         return 0;
         }
@@ -391,6 +415,7 @@ class List
                 p->next = p->next->next;
                 
               }
+              setBminus();
               delete tmp;
               p=p->next;
             } 
@@ -512,6 +537,9 @@ class List
 
       other.front = nullptr;
       other.back = other.front; 
+
+      //setting bookkeeping right
+      
       return;
       }
 
@@ -938,7 +966,7 @@ class List
   private:
     Node *front;
     Node *back;
-    int bookkeeping =0;
+    int bookkeeping = 1;
 
     void init( ) {
       front = nullptr;

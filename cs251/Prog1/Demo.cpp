@@ -69,8 +69,8 @@ int main(int argc, char *argv[]){
   list->slow_remove_all(2);
   cout << "after remove-all(2):\n" << endl;
   list->print();
-  cout << "list lenght? ";
-  list->length();
+  cout << "list lenght? " << list->length();
+  
 
   // string words[] = {"hello", "goodbye", "sunrise", "sunset"};
   string words[] = {"aa", "bb", "cc", "dd"};
@@ -326,7 +326,13 @@ cout << endl << "TESTING suffix_maxes() module" << endl;
   listB->print();
   cout << "new list: \t" << endl;
   newListAgainB->print();
+  cout << "list lenght? ";
+  
+  list->print();
+  
+  
 
+cout << "list lenght? " << list->length();
   // list2->front = NULL;
   
 
