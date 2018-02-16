@@ -16,7 +16,7 @@ class List
     {
       T      data;
       Node   *next;
-      int bookkeeping =0;
+      
 
       Node( const T & d = T{}, Node * n = nullptr)
         : data{ d },  next{ n } { }
@@ -87,6 +87,9 @@ class List
      *	       maybe for "bookkeeping"??
      */
     int length( ) const {
+
+      cout << "inside length functiong" << endl;
+      return bookkeeping;
       Node *p = front;
       int n=0;
 
@@ -120,7 +123,7 @@ class List
 
     void push_front(const T & data) {
       front = new Node(data, front);
-      front->bookkeeping++;
+      bookkeeping++;
 
       if(back == nullptr)
         back = front;
@@ -133,7 +136,7 @@ class List
         return false;
       val = front->data;
 
-      front->bookkeeping--;
+      bookkeeping--;
 
       tmp = front;
       front = front->next;
@@ -146,7 +149,7 @@ class List
     void push_back(const T & val) {
       Node *tmp = new Node(val, nullptr);
       
-
+      bookkeeping++;
       if(front == nullptr) {
         front = back = tmp;
       }
@@ -165,7 +168,7 @@ class List
         pop_front(dummy);
         return true;
       }
-      front->bookkeeping--;
+      bookkeeping--;
       p = front;
       while(p->next != nullptr) {
         if(x == p->next->data) {
@@ -935,6 +938,7 @@ class List
   private:
     Node *front;
     Node *back;
+    int bookkeeping =0;
 
     void init( ) {
       front = nullptr;
@@ -947,7 +951,7 @@ class List
       //base case 
       if(p == nullptr)
       { 
-        cout << "reached null in suffix_helper " << endl;
+        
         return;
       }
       
@@ -961,19 +965,19 @@ class List
            return;
         }
         //if this value is larger than the previous node add it to the new listKs
-        cout << "wtf " << a << endl;
+        
         if (p->data > other->front->data)
         {
           
-          cout << "data>next: " << a << endl;
+         
           other->push_front(p->data);
           return;
         }
-        cout << "wtf 0" << endl;
+        
         //if this value is smaller than the next node value add next node value to the list 
         if (p->data <= other->front->data)
         {
-          cout << "data>next: " << endl;
+          
             other->push_front(other->front->data);
             return;
         }

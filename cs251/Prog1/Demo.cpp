@@ -64,12 +64,13 @@ int main(int argc, char *argv[]){
   list->print();
 
   list->pop_front(x);
-  cout << "popped " << x <<endl;
-  list->print();
+  
 
   list->slow_remove_all(2);
-  cout << "after remove-all(2):\n";
+  cout << "after remove-all(2):\n" << endl;
   list->print();
+  cout << "list lenght? ";
+  list->length();
 
   // string words[] = {"hello", "goodbye", "sunrise", "sunset"};
   string words[] = {"aa", "bb", "cc", "dd"};
@@ -109,10 +110,26 @@ int main(int argc, char *argv[]){
   list2->count("aa");
   cout << "list3 has this many bb:\t"; 
   list3->count("bb");
+  cout << endl;
 
   //will check if two lists are equal, equal_to() function
-  list->equal_to(*list);
-  list2->equal_to(*list3);
+  cout << endl << "TESTING equal_to" << endl;
+  cout << "list vs list:";
+  if (list->equal_to(*list) == true)
+    {
+      cout << "YES SAME" << endl;
+    }else{
+      cout << "not equal" << endl;
+    }
+
+  cout << "list vs listB:";
+  if (list2->equal_to(*list3) == true)
+    {
+      cout << "YES SAME" << endl;
+    }else{
+      cout << "not equal" << endl;
+    }
+ 
 
   //popping back NODE 
   int newData;

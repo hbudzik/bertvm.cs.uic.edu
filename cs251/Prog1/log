@@ -1,9 +1,9 @@
-[ 7 3 5 4 7 2 2 1 ]
-[ 7 3 5 4 7 2 2 1 1 2 3 4 ]
-popped 7
-[ 3 5 4 7 2 2 1 1 2 3 4 ]
+[ 4 4 3 2 8 1 7 3 ]
+[ 4 4 3 2 8 1 7 3 1 2 3 4 ]
 after remove-all(2):
-[ 3 5 4 7 1 1 3 4 ]
+
+[ 4 3 8 1 7 3 1 3 4 ]
+list lenght? inside length functiong
 
 print list2 now:	[ dd cc bb aa ]
 print list2 reverse	[ aa bb cc dd ]
@@ -11,22 +11,31 @@ list  sorted?  0
 list2 sorted?  0
 list3 sorted?  1
 fiveZ has this mandy 0s:	list2 has this many aa:	list3 has this many bb:	
+
+TESTING equal_to
+list vs list:inside length functiong
+inside length functiong
+YES SAME
+list vs listB:inside length functiong
+inside length functiong
+not equal
+
 popping back NODE: pop_back 
-current list: [ 3 5 4 7 1 1 3 4 ]
+current list: [ 4 3 8 1 7 3 1 3 4 ]
 removed back node
 data stored: 4
 list after popped value: 
-[ 3 5 4 7 1 1 3 ]
+[ 4 3 8 1 7 3 1 3 ]
 
 Printing list in reverse RECURSIVLY!
 
 PRINTING LIST original: 
-[ 3 5 4 7 1 1 3 ]
+[ 4 3 8 1 7 3 1 3 ]
 
 PRINTING LIST AFTER reverse() FUNCT, reversing the list
-[ 3 1 1 7 4 5 3 ]
+[ 3 1 3 7 1 8 3 4 ]
 TESTING fast_remove_all(1)
-[ 3 1 1 7 4 5 3 ]
+[ 3 1 3 7 1 8 3 4 ]
 TESTING insert_sorted(sortedList)
 original: [ 1 3 5 7 9 ]
 
@@ -57,10 +66,10 @@ list 9: [ ]
 
 [ 99 ]
 TESTING clone() function 
-List->print(): 	[ 3 1 1 7 4 5 3 ]
+List->print(): 	[ 3 1 3 7 1 8 3 4 ]
 List clone: 	[ dd cc bb aa aa bb cc dd ]
 TESTING prefix() module
-original list: 	[ 3 1 1 7 4 5 3 ]
+original list: 	[ 3 1 3 7 1 8 3 4 ]
 	*AFTER prefix*
 original list: 	
 [ dd cc bb aa aa bb cc dd ]
@@ -68,40 +77,19 @@ prefix list:
 [ dd cc bb ]
 
 TESTING prefix() module
-original list: 	[ 8 2 6 2 2 5 5 6 ]
+original list: 	[ 5 1 1 7 8 1 3 5 ]
 	*AFTER filter_leq is called with cutoff value 3*
 original list: 	
-[ 8 2 6 2 2 5 5 6 ]
+[ 5 1 1 7 8 1 3 5 ]
 original list after filter: 	
-[ 8 6 6 ]
+[ 7 8 ]
 returned list: 	
-[ 2 2 2 5 5 ]
+[ 5 1 1 1 3 5 ]
 
 TESTING suffix_maxes() module
 listB: 	
-[ 3 8 5 5 8 1 2 3 ]
-reached null in suffix_helper 
-wtf 0
-wtf 0
-data>next: 
-wtf 0
-wtf 0
-data>next: 
-wtf 0
-data>next: 0
-wtf 0
-wtf 0
-data>next: 
-wtf 0
-wtf 0
-data>next: 
-wtf 0
-wtf 0
-data>next: 
-wtf 0
-wtf 0
-data>next: 
+[ 7 5 2 1 7 5 7 8 ]
 listB after suffix_maxes: 	
-[ 3 8 5 5 8 1 2 3 ]
+[ 7 5 2 1 7 5 7 8 ]
 new list: 	
-[ 8 8 8 8 8 3 3 3 ]
+[ 8 8 8 8 8 8 8 8 ]
