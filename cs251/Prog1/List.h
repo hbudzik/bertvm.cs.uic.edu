@@ -283,7 +283,7 @@ class List
    
 
     //checks if list is only with one variable 
-    if ((other.front == other.back) && (p != back)
+    if ((other.front == other.back) && (p != back))
       {
         return false;
       }
