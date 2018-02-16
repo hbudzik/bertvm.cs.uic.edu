@@ -280,10 +280,10 @@ class List
     bool equal_to(const List<T> &other) const {
       //checks if both lists are equal in length
     Node *p = front;
-    Node *o = other.front;
+   
 
     //checks if list is only with one variable 
-    if ((o->front == o->back) && (this->front != this->back)
+    if ((other.front == other.back) && (p != back)
       {
         return false;
       }
@@ -292,12 +292,12 @@ class List
     {
         while(p!=nullptr)
         {
-          if(p->data != o->data)
+          if(p->data != other.data)
           {
             return false;
           }
           p = p->next;
-          o = o->next;
+          o = other.next;
          }
       return true;
     }
