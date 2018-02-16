@@ -108,7 +108,7 @@ class List
      */
     int length( ) const {
 
-      cout << "inside length functiong" << endl;
+    
       return this->bookkeeping;
       Node *p = front;
       int n=0;
