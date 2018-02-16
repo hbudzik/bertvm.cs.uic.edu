@@ -283,7 +283,7 @@ class List
     Node *o = other.front;
 
     //checks if list is only with one variable 
-    if (o->front == o->back)
+    if ((o->front == o->back) && (this->front != this->back)
       {
         return false;
       }
