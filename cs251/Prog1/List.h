@@ -540,7 +540,7 @@ class List
     List<T> * clone() const {
       Node *p = front;
       //creates a pointer to a List<T>
-      List<int> *newCopy = new List<int>();
+      List<T> *newCopy = new List<T>();
 
       //deep copies lists
       while (p!=nullptr)
@@ -620,8 +620,22 @@ class List
      *		               re-used from the calling list).
      */
     List<T> * prefix(unsigned int k) {
+      Node * p = front;
 
-      return nullptr;
+      //new list 
+      List<T> * retList = new List<T>();
+
+      //will deep copy k number nodes to return list
+
+      int n = 0;
+      while (p!=nullptr && k > n)
+      {
+        retList->push_back(p->data);
+        p=p->next;
+        n++;
+      }
+
+      return retList;
 
     }
 
@@ -665,9 +679,50 @@ class List
      *			
      */
     List<T> * filter_leq(const T & cutoff) {
+      Node * p = front;
+      Node * prev; 
+      Node * tmp;
+      T dummy;
+      //new list 
+      List<T> * retList = new List<T>();
+      
+      //will remove all nodes with values smaler or equal then cutoff and assign to returning list 
 
-      return nullptr;
+      //if first node is equal or less than cutoff
+      while(true)
+      {
+        if (p->data <= cutoff)
+        {
+          retList->push_back(p->data);
+          //deleting front NODE 
+          front = front->next;
+          delete p;
+          p = front;
+        }else{
+        p = front->next;
+        prev = front;
+        break;
+        }
+      }
 
+      while (p!=nullptr)
+      { 
+        //checks if value of original node is smaller or equal then cutoff
+        if(p->data <= cutoff){
+          //if yes then push the value onto the return list
+          retList->push_back(p->data);
+          //remove node from the old list and delete it 
+          prev->next = p->next;
+          tmp = p;
+          p = p->next;
+          delete tmp;          
+        }else{
+        //move to the next node 
+        prev=p;
+        p=p->next;
+        }
+      }
+      return retList;
     }
 
     /**
@@ -864,7 +919,14 @@ class List
      *
      */
     List<T> * suffix_maxes() const{
-      return nullptr;
+      Node *g = this->front;
+      List<T> * goesBackList = new List<T>();
+
+      //will check from reverse recursivly 
+      suffix_helper(goesBackList, g);
+    
+
+      return goesBackList;
     }
 
 
@@ -877,6 +939,40 @@ class List
       back = nullptr;
     }
 
+    void suffix_helper(List<T> *other, Node * p) const
+    {
+     int a = 0; 
+      //base case 
+      if(p == nullptr)
+      { 
+        cout << "reached null in suffix_helper " << endl;
+        return;
+      }
+      
+      suffix_helper(other, p->next);
+      
+        //if encounter the last node add it to the new list
+        if (p == back)
+        { 
+          cout << "back" << endl;
+           other->push_back(p->data);
+        }
+        //if this value is larger than the previous node add it to the new listKs
+        if (p->data > p->next->data)
+        {
+          a++;
+          cout << "data>next: " << a << endl;
+          other->push_front(p->data);
+        }
+        //if this value is smaller than the next node value add next node value to the list 
+        if (p->data <= p->next->data)
+        {
+          cout << "data>next: " << endl;
+            other->push_front(p->next->data);
+        }
+    return;
+    }
+
     void printListReverse_R(const Node * p) const
     {
         //base case
@@ -886,11 +982,7 @@ class List
         }
       
         printListReverse_R(p->next);
-        //prints after calling recursive function 
-        cout << " " << p->data;
     }
-
-
 };
 
 #endif

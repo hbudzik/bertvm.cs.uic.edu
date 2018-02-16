@@ -46,14 +46,14 @@ int main(int argc, char *argv[]){
 
   srand(time(0));   // for random rand()
 
-    list->push_front(rand() % 5 +1);
-    list->push_front(rand() % 5 +1);
-    list->push_front(rand() % 5 +1);
-    list->push_front(rand() % 5 +1);
-    list->push_front(rand() % 5 +1);
-    list->push_front(rand() % 5 +1);
-    list->push_front(rand() % 5 +1);
-    list->push_front(rand() % 5 +1);
+    list->push_front(rand() % 8 +1);
+    list->push_front(rand() % 8 +1);
+    list->push_front(rand() % 8 +1);
+    list->push_front(rand() % 8 +1);
+    list->push_front(rand() % 8 +1);
+    list->push_front(rand() % 8 +1);
+    list->push_front(rand() % 8 +1);
+    list->push_front(rand() % 8 +1);
 
   list->print();
 
@@ -240,15 +240,76 @@ List<int> *list7 = new List<int>();
 
 
   //list for cloning
-  List<int> *p;
+  List<string> *p;
     cout << "TESTING clone() function " << endl;
     cout << "List->print(): \t";
     list->print();
     cout<< "List clone: \t";
-    p =list->clone();
+    p =list2->clone();
     p->print();
   
+  List<string> * prefixReturn = new List<string>();
+  //prefix module
+  cout << "TESTING prefix() module" << endl;
+  cout << "original list: \t";
+  list->print();
+  cout << "\t*AFTER prefix*" << endl;
+  cout << "original list: \t" << endl;
+  list2->print();
+  cout << "prefix list: \t" << endl;
+  prefixReturn = list2->prefix(3);
+  prefixReturn->print();
   
+
+   //testing filter_leq() method 
+  List<int> *listA = new List<int>();
+  List<int> * newListAgain = new List<int>();
+    listA->push_front(rand() % 8 +1);
+    listA->push_front(rand() % 8 +1);
+    listA->push_front(rand() % 8 +1);
+    listA->push_front(rand() % 8 +1);
+    listA->push_front(rand() % 8 +1);
+    listA->push_front(rand() % 8 +1);
+    listA->push_front(rand() % 8 +1);
+    listA->push_front(rand() % 8 +1);
+ 
+  cout << endl << "TESTING prefix() module" << endl;
+  cout << "original list: \t";
+  listA->print();
+  cout << "\t*AFTER filter_leq is called with cutoff value 3*" << endl;
+  cout << "original list: \t" << endl;
+  listA->print();
+  
+  newListAgain = listA->filter_leq(5);
+  cout << "original list after filter: \t" << endl;
+  listA->print();
+  cout << "returned list: \t" << endl;
+  newListAgain->print();
+  
+
+//sufix call
+cout << endl << "TESTING suffix_maxes() module" << endl;
+  List<int> *listB = new List<int>();
+  List<int> * newListAgainB = new List<int>();
+    listB->push_front(rand() % 8 +1);
+    listB->push_front(rand() % 8 +1);
+    listB->push_front(rand() % 8 +1);
+    listB->push_front(rand() % 8 +1);
+    listB->push_front(rand() % 8 +1);
+    listB->push_front(rand() % 8 +1);
+    listB->push_front(rand() % 8 +1);
+    listB->push_front(rand() % 8 +1);
+  
+  
+  cout << "listB: \t" << endl;
+  listB->print();
+  
+  newListAgainB = listB->suffix_maxes();
+  cout << "listB after suffix_maxes: \t" << endl;
+  listB->print();
+  cout << "new list: \t" << endl;
+  newListAgainB->print();
+
   // list2->front = NULL;
   
 
