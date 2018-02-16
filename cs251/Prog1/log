@@ -1,10 +1,9 @@
-[ 5 3 2 5 4 2 8 7 ]
-[ 5 3 2 5 4 2 8 7 1 2 3 4 ]
+[ 1 4 6 2 6 5 3 4 ]
+[ 1 4 6 2 6 5 3 4 1 2 3 4 ]
 after remove-all(2):
 
-[ 3 5 4 8 7 1 3 4 ]
-inside length functiong
-list lenght? 8
+[ 4 6 6 5 3 4 1 3 4 ]
+list lenght? 9
 print list2 now:	[ dd cc bb aa ]
 print list2 reverse	[ aa bb cc dd ]
 list  sorted?  0
@@ -13,29 +12,25 @@ list3 sorted?  1
 fiveZ has this mandy 0s:	list2 has this many aa:	list3 has this many bb:	
 
 TESTING equal_to
-list vs list:inside length functiong
-inside length functiong
-YES SAME
-list vs listB:inside length functiong
-inside length functiong
-not equal
+list vs list:YES SAME
+list vs listB:not equal
 
 popping back NODE: pop_back 
-current list: [ 3 5 4 8 7 1 3 4 ]
+current list: [ 4 6 6 5 3 4 1 3 4 ]
 removed back node
 data stored: 4
 list after popped value: 
-[ 3 5 4 8 7 1 3 ]
+[ 4 6 6 5 3 4 1 3 ]
 
 Printing list in reverse RECURSIVLY!
 
 PRINTING LIST original: 
-[ 3 5 4 8 7 1 3 ]
+[ 4 6 6 5 3 4 1 3 ]
 
 PRINTING LIST AFTER reverse() FUNCT, reversing the list
-[ 3 1 7 8 4 5 3 ]
+[ 3 1 4 3 5 6 6 4 ]
 TESTING fast_remove_all(1)
-[ 3 1 7 8 4 5 3 ]
+[ 3 1 4 3 5 6 6 4 ]
 TESTING insert_sorted(sortedList)
 original: [ 1 3 5 7 9 ]
 
@@ -65,34 +60,30 @@ list 8: [ 22 12 3 7 2 10 34 1 3 0 ]
 list 9: [ ]
 
 [ 99 ]
+
 TESTING clone() function 
-List->print(): 	[ 3 1 7 8 4 5 3 ]
+List->print(): 	[ 3 1 4 3 5 6 6 4 ]
 List clone: 	[ dd cc bb aa aa bb cc dd ]
-TESTING prefix() module
-original list: 	[ 3 1 7 8 4 5 3 ]
-	*AFTER prefix*
-original list: 	
-[ dd cc bb aa aa bb cc dd ]
-prefix list: 	
-[ dd cc bb ]
 
 TESTING prefix() module
-original list: 	[ 5 2 5 8 4 6 1 8 ]
-	*AFTER filter_leq is called with cutoff value 3*
+original list: 	[ 3 1 4 3 5 6 6 4 ]
+prefix list: 	
+[ ]
+
+	*TESTING filter_leq is called with cutoff value 3*
 original list: 	
-[ 5 2 5 8 4 6 1 8 ]
+[ 7 3 3 7 6 8 4 2 ]
 original list after filter: 	
-[ 8 6 8 ]
+[ 7 7 6 8 ]
 returned list: 	
-[ 5 2 5 4 1 ]
+[ 3 3 4 2 ]
 
 TESTING suffix_maxes() module
 listB: 	
-[ 8 5 6 8 6 8 1 5 ]
+[ 7 5 1 6 7 7 7 1 ]
 listB after suffix_maxes: 	
-[ 8 5 6 8 6 8 1 5 ]
+[ 7 5 1 6 7 7 7 1 ]
 new list: 	
-[ 8 8 8 8 8 8 5 5 ]
-list lenght? [ 3 1 7 8 4 5 3 ]
-inside length functiong
-list lenght? 7
+[ 7 7 7 7 7 7 7 1 ]
+list lenght? [ 3 1 4 3 5 6 6 4 ]
+list lenght? 8

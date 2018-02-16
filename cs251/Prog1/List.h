@@ -654,22 +654,27 @@ class List
      */
     List<T> * prefix(unsigned int k) {
       Node * p = front;
-
+      int n = 0;
       //new list 
       List<T> * retList = new List<T>();
 
-      //will deep copy k number nodes to return list
-
-      int n = 0;
-      while (p!=nullptr && k > n)
+      //k = 0
+      if (k == 0)
       {
-        retList->push_back(p->data);
+        return retList;
+      }
+      //will deep copy k number nodes to return list
+   
+
+      while (p != nullptr && k > n)
+      {
+        
+          retList->push_back(p->data);
         p=p->next;
         n++;
       }
-
+      
       return retList;
-
     }
 
     /**

@@ -258,23 +258,20 @@ List<int> *list7 = new List<int>();
 
   //list for cloning
   List<string> *p;
-    cout << "TESTING clone() function " << endl;
+    cout << endl << "TESTING clone() function " << endl;
     cout << "List->print(): \t";
     list->print();
     cout<< "List clone: \t";
     p =list2->clone();
     p->print();
   
-  List<string> * prefixReturn = new List<string>();
+  List<int> * prefixReturn = new List<int>();
   //prefix module
-  cout << "TESTING prefix() module" << endl;
+  cout << endl << "TESTING prefix() module" << endl;
   cout << "original list: \t";
   list->print();
-  cout << "\t*AFTER prefix*" << endl;
-  cout << "original list: \t" << endl;
-  list2->print();
   cout << "prefix list: \t" << endl;
-  prefixReturn = list2->prefix(3);
+  prefixReturn = list->prefix(0);
   prefixReturn->print();
   
 
@@ -290,10 +287,7 @@ List<int> *list7 = new List<int>();
     listA->push_front(rand() % 8 +1);
     listA->push_front(rand() % 8 +1);
  
-  cout << endl << "TESTING prefix() module" << endl;
-  cout << "original list: \t";
-  listA->print();
-  cout << "\t*AFTER filter_leq is called with cutoff value 3*" << endl;
+  cout << endl << "\t*TESTING filter_leq is called with cutoff value 3*" << endl;
   cout << "original list: \t" << endl;
   listA->print();
   
