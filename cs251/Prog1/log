@@ -1,8 +1,8 @@
-[ 8 3 7 8 5 4 3 1 ]
-[ 8 3 7 8 5 4 3 1 1 2 3 4 ]
+[ 1 1 5 7 1 7 4 6 ]
+[ 1 1 5 7 1 7 4 6 1 2 3 4 ]
 after remove-all(2):
 
-[ 3 7 8 5 4 3 1 1 3 4 ]
+[ 1 5 7 1 7 4 6 1 3 4 ]
 list lenght? 10
 print list2 now:	[ dd cc bb aa ]
 print list2 reverse	[ aa bb cc dd ]
@@ -16,21 +16,21 @@ list vs list:YES SAME
 list vs listB:not equal
 
 popping back NODE: pop_back 
-current list: [ 3 7 8 5 4 3 1 1 3 4 ]
+current list: [ 1 5 7 1 7 4 6 1 3 4 ]
 removed back node
 data stored: 4
 list after popped value: 
-[ 3 7 8 5 4 3 1 1 3 ]
+[ 1 5 7 1 7 4 6 1 3 ]
 
 Printing list in reverse RECURSIVLY!
 
 PRINTING LIST original: 
-[ 3 7 8 5 4 3 1 1 3 ]
+[ 1 5 7 1 7 4 6 1 3 ]
 
 PRINTING LIST AFTER reverse() FUNCT, reversing the list
-[ 3 1 1 3 4 5 8 7 3 ]
+[ 3 1 6 4 7 1 7 5 1 ]
 TESTING fast_remove_all(1)
-[ 3 1 1 3 4 5 8 7 3 ]
+[ 3 1 6 4 7 1 7 5 1 ]
 TESTING insert_sorted(sortedList)
 original: [ 1 3 5 7 9 ]
 
@@ -62,30 +62,30 @@ list 9: [ ]
 [ 99 ]
 
 TESTING clone() function 
-List->print(): 	[ 3 1 1 3 4 5 8 7 3 ]
+List->print(): 	[ 3 1 6 4 7 1 7 5 1 ]
 List clone: 	[ dd cc bb aa aa bb cc dd ]
 
 TESTING prefix() module
-original list: 	[ 3 1 1 3 4 5 8 7 3 ]
+original list: 	[ 3 1 6 4 7 1 7 5 1 ]
 prefix list: 	
 [ ]
 
-[ 3 1 1 3 4 5 8 7 3 ]
+[ 3 1 6 4 7 1 7 5 1 ]
 
 	*TESTING filter_leq is called with cutoff value 3*
 original list: 	
-[ 8 7 7 8 6 1 2 6 ]
+[ 7 7 4 1 4 5 6 3 ]
 original list after filter: 	
-[ 8 7 7 8 6 6 ]
+[ 5 6 3 ]
 returned list: 	
-[ 1 2 ]
+[ 4 1 4 5 3 ]
 
 TESTING suffix_maxes() module
 listB: 	
-[ 1 3 8 3 5 3 6 4 ]
+[ 7 6 8 7 5 6 3 6 ]
 listB after suffix_maxes: 	
-[ 1 3 8 3 5 3 6 4 ]
+[ 7 6 8 7 5 6 3 6 ]
 new list: 	
-[ 8 8 8 6 6 6 6 4 ]
-list lenght? [ 3 1 1 3 4 5 8 7 3 ]
+[ 8 8 8 7 6 6 6 6 ]
+list lenght? [ 3 1 6 4 7 1 7 5 1 ]
 list lenght? 9

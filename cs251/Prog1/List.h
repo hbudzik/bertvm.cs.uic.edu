@@ -736,13 +736,15 @@ class List
           //if yes then push the value onto the return list
           retList->push_back(p->data);
           //remove node from the old list and delete it 
-          prev->next = p->next;
-          tmp = p;
+         // prev->next = p->next;
+         // tmp = p;
+
           p = p->next;
-          delete tmp;          
+         this->pop_front(dummy);
+         // delete tmp;          
         }else{
         //move to the next node 
-        prev=p;
+       // prev=p;
         p=p->next;
         }
       }
