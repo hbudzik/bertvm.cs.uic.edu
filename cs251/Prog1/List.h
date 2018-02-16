@@ -665,12 +665,15 @@ class List
       }
       //will deep copy k number nodes to return list
    
-
+      int dd = 1;
       while (p != nullptr && k > n)
       {
         
           retList->push_back(p->data);
-        p=p->next;
+          
+          p=p->next;
+          this->pop_front(dd);
+          
         n++;
       }
       
