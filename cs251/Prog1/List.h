@@ -954,22 +954,28 @@ class List
         //if encounter the last node add it to the new list
         if (p == back)
         { 
-          cout << "back" << endl;
+          
            other->push_back(p->data);
+           return;
         }
         //if this value is larger than the previous node add it to the new listKs
-        if (p->data > p->next->data)
+        cout << "wtf " << a << endl;
+        if (p->data > other->front->data)
         {
-          a++;
+          
           cout << "data>next: " << a << endl;
           other->push_front(p->data);
+          return;
         }
+        cout << "wtf 0" << endl;
         //if this value is smaller than the next node value add next node value to the list 
-        if (p->data <= p->next->data)
+        if (p->data <= other->front->data)
         {
           cout << "data>next: " << endl;
-            other->push_front(p->next->data);
+            other->push_front(other->front->data);
+            return;
         }
+        
     return;
     }
 
