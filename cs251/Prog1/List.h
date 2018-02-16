@@ -668,15 +668,13 @@ class List
       int dd = 1;
       while (p != nullptr && k > n)
       {
-        
           retList->push_back(p->data);
           
           p=p->next;
           this->pop_front(dd);
-          
+
         n++;
       }
-      
       return retList;
     }
 
@@ -729,22 +727,7 @@ class List
       
       //will remove all nodes with values smaler or equal then cutoff and assign to returning list 
 
-      //if first node is equal or less than cutoff
-      while(true)
-      {
-        if (p->data <= cutoff)
-        {
-          retList->push_back(p->data);
-          //deleting front NODE 
-          front = front->next;
-          delete p;
-          p = front;
-        }else{
-        p = front->next;
-        prev = front;
-        break;
-        }
-      }
+      
 
       while (p!=nullptr)
       { 

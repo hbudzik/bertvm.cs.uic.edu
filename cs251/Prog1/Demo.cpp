@@ -271,7 +271,7 @@ List<int> *list7 = new List<int>();
   cout << "original list: \t";
   list->print();
   cout << "prefix list: \t" << endl;
-  prefixReturn = list->prefix(3);
+  prefixReturn = list->prefix(0);
   prefixReturn->print();
   cout << endl;
   list->print();
