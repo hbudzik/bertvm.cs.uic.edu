@@ -283,7 +283,7 @@ class List
     Node *o = other.front;
 
     //checks if list is only with one variable 
-    if ((o->next == nullptr ) && (p != nullptr))
+    if ((o->next == nullptr ) && (p->next != nullptr))
       {
         return false;
       }
@@ -297,7 +297,7 @@ class List
             return false;
           }
           p = p->next;
-          o= o->next;
+          o = o->next;
          }
       return true;
     }
