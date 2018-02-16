@@ -282,21 +282,23 @@ class List
     Node *p = front;
     Node *o = other.front;
 
+    //checks if list is only with one variable 
+    if (o->front == o->back)
+      {
+        return false;
+      }
+
     if (this->length() == other.length())
     {
         while(p!=nullptr)
         {
           if(p->data != o->data)
           {
-           
             return false;
           }
-            
-
           p = p->next;
           o = o->next;
          }
- 
       return true;
     }
   
