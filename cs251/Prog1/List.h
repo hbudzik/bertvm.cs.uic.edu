@@ -109,7 +109,7 @@ class List
     int length( ) const {
 
     
-      
+      return this->bookkeeping;
       Node *p = front;
       int n=0;
 
