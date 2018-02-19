@@ -16,7 +16,7 @@ class List
     {
       T      data;
       Node   *next;
-      int bookkeeping =0;
+      
 
       Node( const T & d = T{}, Node * n = nullptr)
         : data{ d },  next{ n } { }
@@ -25,6 +25,8 @@ class List
 
 
   public:
+
+
     // constructors
     List( ) { 
       init( );
@@ -33,6 +35,24 @@ class List
     ~List( ) {
       clear( );
     }
+
+      void setBplus(){
+      bookkeeping++;
+    }
+
+    void setBminus(){
+      bookkeeping--;
+    }
+
+    int getB(){
+      return bookkeeping;
+    }
+
+    int setBvalue(int x)
+    {
+      bookkeeping = x;
+    }
+
     /**
      * Disclaimer:  C++ conventions tell us that we should have a couple
      * of additional constructors here (a copy constructor, assignment operator
@@ -87,6 +107,9 @@ class List
      *	       maybe for "bookkeeping"??
      */
     int length( ) const {
+
+    
+      return this->bookkeeping;
       Node *p = front;
       int n=0;
 
@@ -120,7 +143,7 @@ class List
 
     void push_front(const T & data) {
       front = new Node(data, front);
-      front->bookkeeping++;
+      setBplus();
 
       if(back == nullptr)
         back = front;
@@ -133,7 +156,7 @@ class List
         return false;
       val = front->data;
 
-      front->bookkeeping--;
+      setBminus();
 
       tmp = front;
       front = front->next;
@@ -145,8 +168,8 @@ class List
 
     void push_back(const T & val) {
       Node *tmp = new Node(val, nullptr);
+      setBplus();
       
-
       if(front == nullptr) {
         front = back = tmp;
       }
@@ -162,10 +185,11 @@ class List
 
       if(front==nullptr) return false;
       if(front->data == x) {
+        
         pop_front(dummy);
         return true;
       }
-      front->bookkeeping--;
+      setBminus();
       p = front;
       while(p->next != nullptr) {
         if(x == p->next->data) {
@@ -242,13 +266,15 @@ class List
      */
     bool pop_back(T &data) {
       Node *p = front;
-     
+      Node *b = back;
+      
 
       if (p==nullptr){
         cout << "p == nullptr " << endl;
         return false;     //list empty do nothing return false
       }
 
+      setBminus();
       //traverse the list to the end
       while ( p->next != back)
       {
@@ -256,12 +282,12 @@ class List
       }
 
       //assign value of last node to parameter data before deleting node
-      data = back->data;
+      data = b->data;
 
       //delete last node and assigne it to prev node
       delete back;
-      back = p;   
-      back->next = nullptr;  
+      b = p;   
+      b->next = nullptr;  
 
     return true;
 
@@ -282,21 +308,23 @@ class List
     Node *p = front;
     Node *o = other.front;
 
+    //checks if list is only with one variable 
+    /*if ((o->next == nullptr ) && (p->next != nullptr))
+      {
+        return false;
+      }*/
+
     if (this->length() == other.length())
     {
         while(p!=nullptr)
         {
           if(p->data != o->data)
           {
-           
             return false;
           }
-            
-
           p = p->next;
           o = o->next;
          }
- 
       return true;
     }
   
@@ -375,6 +403,7 @@ class List
 
 
         if(p->data == x) {
+          setBminus();
         pop_front(dummy);
         return 0;
         }
@@ -386,6 +415,7 @@ class List
                 p->next = p->next->next;
                 
               }
+              setBminus();
               delete tmp;
               p=p->next;
             } 
@@ -507,6 +537,9 @@ class List
 
       other.front = nullptr;
       other.back = other.front; 
+
+      //setting bookkeeping right
+      
       return;
       }
 
@@ -540,7 +573,7 @@ class List
     List<T> * clone() const {
       Node *p = front;
       //creates a pointer to a List<T>
-      List<int> *newCopy = new List<int>();
+      List<T> *newCopy = new List<T>();
 
       //deep copies lists
       while (p!=nullptr)
@@ -620,6 +653,7 @@ class List
      *		               re-used from the calling list).
      */
     List<T> * prefix(unsigned int k) {
+<<<<<<< HEAD
       Node *p = new Node;
       List<int> * returnList = new List<int>();
       
@@ -637,6 +671,31 @@ class List
       }
 
       return returnList;
+=======
+      Node * p = front;
+      int n = 0;
+      //new list 
+      List<T> * retList = new List<T>();
+
+      //k = 0
+      if (k == 0)
+      {
+        return retList;
+      }
+      //will deep copy k number nodes to return list
+   
+      int dd = 1;
+      while (p != nullptr && k > n)
+      {
+          retList->push_back(p->data);
+          
+          p=p->next;
+          this->pop_front(dd);
+
+        n++;
+      }
+      return retList;
+>>>>>>> 53c8ccefba8458923edddf23ce2ddd19b98dd2aa
     }
 
     /**
@@ -679,9 +738,37 @@ class List
      *			
      */
     List<T> * filter_leq(const T & cutoff) {
+      Node * p = front;
+      Node * prev; 
+      Node * tmp;
+      T dummy;
+      //new list 
+      List<T> * retList = new List<T>();
+      
+      //will remove all nodes with values smaler or equal then cutoff and assign to returning list 
 
-      return nullptr;
+      
 
+      while (p!=nullptr)
+      { 
+        //checks if value of original node is smaller or equal then cutoff
+        if(p->data <= cutoff){
+          //if yes then push the value onto the return list
+          retList->push_back(p->data);
+          //remove node from the old list and delete it 
+         // prev->next = p->next;
+         // tmp = p;
+
+          p = p->next;
+         this->pop_front(dummy);
+         // delete tmp;          
+        }else{
+        //move to the next node 
+       // prev=p;
+        p=p->next;
+        }
+      }
+      return retList;
     }
 
     /**
@@ -878,17 +965,65 @@ class List
      *
      */
     List<T> * suffix_maxes() const{
-      return nullptr;
+      Node *g = this->front;
+      List<T> * goesBackList = new List<T>();
+
+      //will check from reverse recursivly 
+      suffix_helper(goesBackList, g);
+    
+
+      return goesBackList;
     }
 
 
   private:
     Node *front;
     Node *back;
+    int bookkeeping = 1;
 
     void init( ) {
       front = nullptr;
       back = nullptr;
+    }
+
+    void suffix_helper(List<T> *other, Node * p) const
+    {
+     int a = 0; 
+      //base case 
+      if(p == nullptr)
+      { 
+        
+        return;
+      }
+      
+      suffix_helper(other, p->next);
+      
+        //if encounter the last node add it to the new list
+        if (p == back)
+        { 
+          
+           other->push_back(p->data);
+           return;
+        }
+        //if this value is larger than the previous node add it to the new listKs
+        
+        if (p->data > other->front->data)
+        {
+          
+         
+          other->push_front(p->data);
+          return;
+        }
+        
+        //if this value is smaller than the next node value add next node value to the list 
+        if (p->data <= other->front->data)
+        {
+          
+            other->push_front(other->front->data);
+            return;
+        }
+        
+    return;
     }
 
     void printListReverse_R(const Node * p) const
@@ -900,11 +1035,7 @@ class List
         }
       
         printListReverse_R(p->next);
-        //prints after calling recursive function 
-        cout << " " << p->data;
     }
-
-
 };
 
 #endif

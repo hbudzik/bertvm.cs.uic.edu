@@ -46,14 +46,14 @@ int main(int argc, char *argv[]){
 
   srand(time(0));   // for random rand()
 
-    list->push_front(rand() % 5 +1);
-    list->push_front(rand() % 5 +1);
-    list->push_front(rand() % 5 +1);
-    list->push_front(rand() % 5 +1);
-    list->push_front(rand() % 5 +1);
-    list->push_front(rand() % 5 +1);
-    list->push_front(rand() % 5 +1);
-    list->push_front(rand() % 5 +1);
+    list->push_front(rand() % 8 +1);
+    list->push_front(rand() % 8 +1);
+    list->push_front(rand() % 8 +1);
+    list->push_front(rand() % 8 +1);
+    list->push_front(rand() % 8 +1);
+    list->push_front(rand() % 8 +1);
+    list->push_front(rand() % 8 +1);
+    list->push_front(rand() % 8 +1);
 
   list->print();
 
@@ -64,12 +64,13 @@ int main(int argc, char *argv[]){
   list->print();
 
   list->pop_front(x);
-  cout << "popped " << x <<endl;
-  list->print();
+  
 
   list->slow_remove_all(2);
-  cout << "after remove-all(2):\n";
+  cout << "after remove-all(2):\n" << endl;
   list->print();
+  cout << "list lenght? " << list->length();
+  
 
   // string words[] = {"hello", "goodbye", "sunrise", "sunset"};
   string words[] = {"aa", "bb", "cc", "dd"};
@@ -109,10 +110,26 @@ int main(int argc, char *argv[]){
   list2->count("aa");
   cout << "list3 has this many bb:\t"; 
   list3->count("bb");
+  cout << endl;
 
   //will check if two lists are equal, equal_to() function
-  list->equal_to(*list);
-  list2->equal_to(*list3);
+  cout << endl << "TESTING equal_to" << endl;
+  cout << "list vs list:";
+  if (list->equal_to(*list) == true)
+    {
+      cout << "YES SAME" << endl;
+    }else{
+      cout << "not equal" << endl;
+    }
+
+  cout << "list vs listB:";
+  if (list2->equal_to(*list3) == true)
+    {
+      cout << "YES SAME" << endl;
+    }else{
+      cout << "not equal" << endl;
+    }
+ 
 
   //popping back NODE 
   int newData;
@@ -240,13 +257,14 @@ List<int> *list7 = new List<int>();
 
 
   //list for cloning
-  List<int> *p;
-    cout << "TESTING clone() function " << endl;
+  List<string> *p;
+    cout << endl << "TESTING clone() function " << endl;
     cout << "List->print(): \t";
     list->print();
     cout<< "List clone: \t";
-    p =list->clone();
+    p =list2->clone();
     p->print();
+<<<<<<< HEAD
 
 //+-----------------------------------------
 //| Module:       prefix
@@ -272,6 +290,75 @@ List<int> *list7 = new List<int>();
            pre->print();
 
   // list2->front = NULL;  
+=======
+  
+  List<int> * prefixReturn = new List<int>();
+  //prefix module
+  cout << endl << "TESTING prefix() module" << endl;
+  cout << "original list: \t";
+  list->print();
+  cout << "prefix list: \t" << endl;
+  prefixReturn = list->prefix(0);
+  prefixReturn->print();
+  cout << endl;
+  list->print();
+  
+
+   //testing filter_leq() method 
+  List<int> *listA = new List<int>();
+  List<int> * newListAgain = new List<int>();
+    listA->push_front(rand() % 8 +1);
+    listA->push_front(rand() % 8 +1);
+    listA->push_front(rand() % 8 +1);
+    listA->push_front(rand() % 8 +1);
+    listA->push_front(rand() % 8 +1);
+    listA->push_front(rand() % 8 +1);
+    listA->push_front(rand() % 8 +1);
+    listA->push_front(rand() % 8 +1);
+ 
+  cout << endl << "\t*TESTING filter_leq is called with cutoff value 3*" << endl;
+  cout << "original list: \t" << endl;
+  listA->print();
+  
+  newListAgain = listA->filter_leq(5);
+  cout << "original list after filter: \t" << endl;
+  listA->print();
+  cout << "returned list: \t" << endl;
+  newListAgain->print();
+  
+
+//sufix call
+cout << endl << "TESTING suffix_maxes() module" << endl;
+  List<int> *listB = new List<int>();
+  List<int> * newListAgainB = new List<int>();
+    listB->push_front(rand() % 8 +1);
+    listB->push_front(rand() % 8 +1);
+    listB->push_front(rand() % 8 +1);
+    listB->push_front(rand() % 8 +1);
+    listB->push_front(rand() % 8 +1);
+    listB->push_front(rand() % 8 +1);
+    listB->push_front(rand() % 8 +1);
+    listB->push_front(rand() % 8 +1);
+  
+  
+  cout << "listB: \t" << endl;
+  listB->print();
+  
+  newListAgainB = listB->suffix_maxes();
+  cout << "listB after suffix_maxes: \t" << endl;
+  listB->print();
+  cout << "new list: \t" << endl;
+  newListAgainB->print();
+  cout << "list lenght? ";
+  
+  list->print();
+  
+  
+
+cout << "list lenght? " << list->length();
+  // list2->front = NULL;
+  
+>>>>>>> 53c8ccefba8458923edddf23ce2ddd19b98dd2aa
 
   delete list;
   delete list2;
