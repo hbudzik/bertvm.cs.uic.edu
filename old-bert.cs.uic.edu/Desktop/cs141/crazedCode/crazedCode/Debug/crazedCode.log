@@ -1,0 +1,3 @@
+﻿  crazedCode.cpp
+c:\users\trupek\desktop\cs141\crazedcode\crazedcode\crazedcode.cpp(10): error C2664: 'int fscanf_s(FILE *const ,const char *const ,...)': cannot convert argument 1 from 'const char [3]' to 'FILE *const '
+  c:\users\trupek\desktop\cs141\crazedcode\crazedcode\crazedcode.cpp(10): note: Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast

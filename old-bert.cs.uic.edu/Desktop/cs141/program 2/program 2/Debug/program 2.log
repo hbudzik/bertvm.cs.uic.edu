@@ -1,0 +1,14 @@
+﻿  program 2.cpp
+c:\users\trupek\desktop\cs141\program 2\program 2\program 2.cpp(196): warning C4473: 'scanf_s' : not enough arguments passed for format string
+  c:\users\trupek\desktop\cs141\program 2\program 2\program 2.cpp(196): note: placeholders and their parameters expect 2 variadic arguments, but 1 were provided
+  c:\users\trupek\desktop\cs141\program 2\program 2\program 2.cpp(196): note: the missing variadic argument 2 is required by format string '%c'
+  c:\users\trupek\desktop\cs141\program 2\program 2\program 2.cpp(196): note: this argument is used as a buffer size
+c:\users\trupek\desktop\cs141\program 2\program 2\program 2.cpp(200): warning C4473: 'scanf_s' : not enough arguments passed for format string
+  c:\users\trupek\desktop\cs141\program 2\program 2\program 2.cpp(200): note: placeholders and their parameters expect 2 variadic arguments, but 1 were provided
+  c:\users\trupek\desktop\cs141\program 2\program 2\program 2.cpp(200): note: the missing variadic argument 2 is required by format string '%c'
+  c:\users\trupek\desktop\cs141\program 2\program 2\program 2.cpp(200): note: this argument is used as a buffer size
+c:\users\trupek\desktop\cs141\program 2\program 2\program 2.cpp(186): warning C4101: 'jumpedPiece': unreferenced local variable
+c:\users\trupek\desktop\cs141\program 2\program 2\program 2.cpp(53): warning C4715: 'checkValidSourcePeg': not all control paths return a value
+c:\users\trupek\desktop\cs141\program 2\program 2\program 2.cpp(94): warning C4715: 'checkValidDestinationPeg': not all control paths return a value
+  program 2.vcxproj -> C:\Users\trupek\Desktop\cs141\program 2\Debug\program 2.exe
+  program 2.vcxproj -> C:\Users\trupek\Desktop\cs141\program 2\Debug\program 2.pdb (Full PDB)

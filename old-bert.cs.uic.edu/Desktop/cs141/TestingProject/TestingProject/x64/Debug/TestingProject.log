@@ -1,0 +1,7 @@
+﻿  TestingProject.cpp
+c:\users\trupek\desktop\cs141\testingproject\testingproject\testingproject.cpp(9): warning C4473: 'scanf_s' : not enough arguments passed for format string
+  c:\users\trupek\desktop\cs141\testingproject\testingproject\testingproject.cpp(9): note: placeholders and their parameters expect 2 variadic arguments, but 1 were provided
+  c:\users\trupek\desktop\cs141\testingproject\testingproject\testingproject.cpp(9): note: the missing variadic argument 2 is required by format string '%s'
+  c:\users\trupek\desktop\cs141\testingproject\testingproject\testingproject.cpp(9): note: this argument is used as a buffer size
+  TestingProject.vcxproj -> C:\Users\trupek\Desktop\cs141\TestingProject\x64\Debug\TestingProject.exe
+  TestingProject.vcxproj -> C:\Users\trupek\Desktop\cs141\TestingProject\x64\Debug\TestingProject.pdb (Full PDB)
