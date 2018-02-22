@@ -1,0 +1,81 @@
+
+FIRST:  DOWNLOAD THE FILES List.h AND Demo.cpp FROM 
+THIS FOLDER (They are slightly different vs. those under
+Lecture Notes).
+
+---------------------------------------------------
+
+Get together with a couple of neighbors.  There will
+be some brainstorming!
+
+Examine the program Demo.cpp and how it interacts with
+the List class (in List.h).
+
+Compile Demo.cpp:
+
+    g++ -std=c++11 Demo.cpp
+
+Run it.  Feel free to fiddle with Demo.cpp to experiment
+with the List class methods.
+
+NOW:  Study the function slow_remove_all
+
+It turns out that the worst case runtime of slow_remove_all
+is QUADRATIC in the length of the list.
+
+Try to figure out a configuration which forces slow_remove_all
+to take quadradic time.
+
+For warmup, analyze the following scenarios (none of which
+result in quadratic runtime!):
+
+    What is the runtime when the value to delete does
+    not appear at all in the list?
+
+    How about if all n elements in the list match the
+    value to delete?
+
+
+Once you have converged on a configuration that forces
+quadratic runtime, it is time to code it up!
+
+In Demo.cpp you will find a "stub" for a function called
+slow_case.  This function is supposed to construct a list
+of length n (parameter) which results in quadratic runtime
+when slow_remove_all removes all zeros from it.
+
+In main you will find a commented-out code segment which
+calls the slow_case function and then invokes
+slow_remove_all on the returned list.
+
+Uncomment that code segment and you will be able to try out
+your ideas.
+
+Also notice that main also takes a command-line parameter so
+you can specify haw long you want the list to be.
+
+For example to run with n=100, you would type:
+
+    ./a.out 100
+
+Once you have your slow_list function coded up, try running 
+the program on pretty big values of n.
+
+Try:
+
+    n=50,000
+    n=100,000
+    n=200,000
+
+If your solution is correct, the program should be pretty
+slow on inputs this big (noticable to humans -- several
+seconds).
+
+Try counting "one-Mississippi, two..." when you run the 
+program for the different values of n.
+
+How many Mississippis for n=100,000?
+
+How many Mississippis for n=200,000?
+
+Is the increase what you expect?  Discuss!!!

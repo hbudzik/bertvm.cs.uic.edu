@@ -1,0 +1,71 @@
+
+
+Lab Exercises.
+
+As usual, feel free to team up with a partner or two!
+
+
+EXERCISE 1 (find and fix the quicksort bug!):
+
+      src/List.h has a list-based implementation of QuickSort.  As you
+      might expect, it uses the filter_leq and concat functions.
+
+      src/demo.cpp is a driver program which builds a list of strings
+      read from standard-input and calls the qsort function on the 
+      resulting list.  It prints the list before and after the sort.
+
+      Tasks:
+
+         First, compile the demo program:
+
+               g++ -std=c++11 demo.cpp -o demo
+
+         Now run the program using the input in file inp.txt
+
+               ./demo < inp.txt
+
+         It should have correctly produced a sorted version of 
+         the input file right?
+
+         Unfortunately, the implementation of  qsort in List.h is buggy!
+         It works on inp.txt, but it doesn't always work correctly -- in
+         fact some times it will seg-fault!
+
+         YOUR JOBS:
+
+             - Figure out the bug and create an input that demonstrates
+               the bug!
+
+              - Fix the Bug (and test).
+      
+EXERCISE 2 (estimation of asymptotic runtime from experiments)
+
+      Log into bert or bertvm.
+
+      In the directory ~jlillis/CS251-public you will find an executable
+      called mystery (but no source code!).
+
+      The program takes a single command line argument N ("problem size").
+
+      When you run the program it does some mysterious computations and 
+      eventually terminates.  When it terminates it prints out the 
+      (approximate) CPU time taken by the run in seconds.
+
+      For example if you do this:
+
+            ~jlillis/CS251-public/mystery 2000
+
+      it will run with N=2000 and then report the elapsed CPU time in
+      seconds.
+
+      Your job:  do some experiments by running the mystery progam for a
+      range of values of N and try to come up with a conjecture on the 
+      asymptotic runtime of the program as a function of N by doing some 
+      analysis.
+
+      Assumption/hint:  the actual runtime has the form THETA(N^d) for
+      some d.  You are trying to figure out what d is.
+      
+
+EXERCISE 2B:  do the same for mystery2
+
