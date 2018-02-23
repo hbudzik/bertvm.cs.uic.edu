@@ -1,0 +1,7 @@
+#!/bin/bash
+#my script
+
+echo \n
+git status
+git fetch origin master
+git pull origin master
