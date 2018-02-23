@@ -1,7 +1,9 @@
 #!/bin/bash
-#my script
+#simple script for git automation 
 
-echo \n
-git status
-git fetch origin master
-git pull origin master
+echo
+echo
+echo "   ***   git   ***"
+
+
+echo "  --> end of script <-- "
