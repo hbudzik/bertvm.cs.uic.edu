@@ -430,51 +430,98 @@ From https://github.com/hbudzik/bertvm.cs.uic.edu
  create mode 100644 "old-bert.cs.uic.edu/Microsoft_Edge_\342\200\21602_\342\200\21622_\342\200\2162018.html"
  create mode 100644 old-bert.cs.uic.edu/NewDatabase.kdbx
 ]0;hbudzik@hubert-dell-laptop: ~/bertvm.cs.uic.edu[01;32mhbudzik@hubert-dell-laptop[00m:[01;34m~/bertvm.cs.uic.edu[00m$ ls
-[0m[01;34mcs[0m  [01;34mcs151[0m  [01;34mcs251[01m0[m -> [32m407457[m bytes
- cs251/LectureNotes/Week-02/Week-02-FRI+RUNTIME-INTRO.pptx        | Bin [31m0[m -> [32m508639[m bytes
- cs251/LectureNotes/Week-02/Week-02-FRI-11AM-GUEST-SPEAKER.pdf    | Bin [31m0[m -> [32m618743[m bytes
- cs251/LectureNotes/Week-02/Week-02-MON-Recursion+ADTs.pptx       | Bin [31m0[m -> [32m748333[m bytes
- cs251/LectureNotes/Week-03/CODE/Demo.cpp                         |  85 [32m++++[m
- cs251/LectureNotes/Week-03/CODE/List.h                           | 672 [32m+++++++++++++++++++++++++++++[m
- cs251/LectureNotes/Week-03/CODE/a.out                            | Bin [31m0[m -> [32m27332[m bytes
- cs251/LectureNotes/Week-03/Wed-drawings.pdf                      | Bin [31m0[m -> [32m79504[m bytes
- cs251/LectureNotes/Week-03/Week-03-FRI+Prog1.pptx                | Bin [31m0[m -> [32m453765[m bytes
- cs251/LectureNotes/Week-03/Week-03-MON+RUNTIME-CONT.pptx         | Bin [31m0[m -> [32m660368[m bytes
- cs251/LectureNotes/Week-03/Week-03-MON-handwritten.pdf           | Bin [31m0[m -> [32m1145231[m bytes
- cs251/LectureNotes/Week-03/Week-03-WED+RUNTIME-CONT+Prog1.pptx   | Bin [31m0[m -> [32m669807[m bytes
- cs251/LectureNotes/Week-04/Week-04-MON.pptx                      | Bin [31m0[m -> [32m338633[m bytes
- cs251/LectureNotes/Week-04/Week-04-WED.pptx                      | Bin [31m0[m -> [32m235073[m bytes
- cs251/LectureNotes/Week-05/Week 05-FRI.pptx                      | Bin [31m0[m -> [32m539061[m bytes
- cs251/LectureNotes/Week-05/Week 05-MON.pptx                      | Bin [31m0[m -> [32m67625[m bytes
- cs251/LectureNotes/Week-05/code/_qsort_exp.c.swp                 | Bin [31m0[m -> [32m12288[m bytes
- cs251/LectureNotes/Week-05/code/a.out                            | Bin [31m0[m -> [32m9111[m bytes
- cs251/LectureNotes/Week-05/code/qsort_exp.c                      | 149 [32m+++++++[m
- cs251/LectureNotes/Week-05/week-05-wed.pptx                      | Bin [31m0[m -> [32m531896[m bytes
- cs251/LectureNotes/week-06/Week-06-WED.pptx                      | Bin [31m0[m -> [32m305276[m bytes
- cs251/Staff.pdf                                                  | Bin [31m0[m -> [32m72788[m bytes
- cs251/Written/Written-HW-01-SAMPLE-SOLN.docx                     | Bin [31m0[m -> [32m137406[m bytes
- ...oft_Edge_\342\200\21602_\342\200\21622_\342\200\2162018.html" |  72 [32m++++[m
- old-bert.cs.uic.edu/NewDatabase.kdbx                             | Bin [31m0[m -> [32m5342[m bytes
- 27 files changed, 978 insertions(+)
- create mode 100644 cs251/LectureNotes/Week-01/Week-01-FRI-Intro+Warmup.pptx
- create mode 100644 cs251/LectureNotes/Week-01/Week-01-WED-Intro+Warmup.pptx
- create mode 100644 cs251/LectureNotes/Week-02/Week 02-WED.pptx
- create mode 100644 cs251/LectureNotes/Week-02/Week-02-FRI+RUNTIME-INTRO.pptx
- create mode 100644 cs251/LectureNotes/Week-02/Week-02-FRI-11AM-GUEST-SPEAKER.pdf
- create mode 100644 cs251/LectureNotes/Week-02/Week-02-MON-Recursion+ADTs.pptx
- create mode 100644 cs251/LectureNotes/Week-03/CODE/Demo.cpp
- create mode 100644 cs251/LectureNotes/Week-03/CODE/List.h
- create mode 100644 cs251/LectureNotes/Week-03/CODE/a.out
- create mode 100644 cs251/LectureNotes/Week-03/Wed-drawings.pdf
- create mode 100644 cs251/LectureNotes/Week-03/Week-03-FRI+Prog1.pptx
- create mode 100644 cs251/LectureNotes/Week-03/Week-03-MON+RUNTIME-CONT.pptx
- create mode 100644 cs251/LectureNotes/Week-03/Week-03-MON-handwritten.pdf
- create mode 100644 cs251/LectureNotes/Week-03/Week-03-WED+RUNTIME-CONT+Prog1.pptx
- create mode 100644 cs251/LectureNotes/Week-04/Week-04-MON.pptx
- create mode 100644 cs251/LectureNotes/Week-04/Week-04-WED.pptx
- create mode 100644 cs251/LectureNotes/Week-05/Week 05-FRI.pptx
- create mode 100644 cs251/LectureNotes/Week-05/Week 05-MON.pptx
- create mode 100644 cs251/LectureNotes/Week-05/code/_qsort_exp.c.swp
- create mode 100644 cs251/LectureNotes/Week-05/code/a.out
- create mode 100644 cs251/LectureNotes/Week-05/code/qsort_exp.c
- create mode 100644 cs251/LectureNotes/Week-05/wee
+[0m[01;34mcs[0m  [01;34mcs151[0m  [01;34mcs251[0m  end  [01;34mold-bert.cs.uic.edu[0m  playlists  [01;32mscript[0m  typescript
+]0;hbudzik@hubert-dell-laptop: ~/bertvm.cs.uic.edu[01;32mhbudzik@hubert-dell-laptop[00m:[01;34m~/bertvm.cs.uic.edu[00m$ ls
+[0m[01;34mcs[0m  [01;34mcs151[0m  [01;34mcs251[0m  end  [01;34mold-bert.cs.uic.edu[0m  playlists  [01;32mscript[0m  typescript
+]0;hbudzik@hubert-dell-laptop: ~/bertvm.cs.uic.edu[01;32mhbudzik@hubert-dell-laptop[00m:[01;34m~/bertvm.cs.uic.edu[00m$ git ls
+git: 'ls' is not a git command. See 'git --help'.
+
+Did you mean this?
+	log
+]0;hbudzik@hubert-dell-laptop: ~/bertvm.cs.uic.edu[01;32mhbudzik@hubert-dell-laptop[00m:[01;34m~/bertvm.cs.uic.edu[00m$ cd [K[K[Kls
+[0m[01;34mcs[0m  [01;34mcs151[0m  [01;34mcs251[0m  end  [01;34mold-bert.cs.uic.edu[0m  playlists  [01;32mscript[0m  typescript
+]0;hbudzik@hubert-dell-laptop: ~/bertvm.cs.uic.edu[01;32mhbudzik@hubert-dell-laptop[00m:[01;34m~/bertvm.cs.uic.edu[00m$ cd old-bert.cs.uic.edu/
+]0;hbudzik@hubert-dell-laptop: ~/bertvm.cs.uic.edu/old-bert.cs.uic.edu[01;32mhbudzik@hubert-dell-laptop[00m:[01;34m~/bertvm.cs.uic.edu/old-bert.cs.uic.edu[00m$ ls
+[0m[01;34mcs251[0m  [01;34mDesktop[0m  [01;34mgit[0m  Microsoft_Edge_‎02_‎22_‎2018.html  NewDatabase.kdbx
+]0;hbudzik@hubert-dell-laptop: ~/bertvm.cs.uic.edu/old-bert.cs.uic.edu[01;32mhbudzik@hubert-dell-laptop[00m:[01;34m~/bertvm.cs.uic.edu/old-bert.cs.uic.edu[00m$ mv Microsoft_Edge_‎02_‎22_‎2018.html  ../
+]0;hbudzik@hubert-dell-laptop: ~/bertvm.cs.uic.edu/old-bert.cs.uic.edu[01;32mhbudzik@hubert-dell-laptop[00m:[01;34m~/bertvm.cs.uic.edu/old-bert.cs.uic.edu[00m$ mv NewDatabase.kdbx .//[K[K./
+]0;hbudzik@hubert-dell-laptop: ~/bertvm.cs.uic.edu/old-bert.cs.uic.edu[01;32mhbudzik@hubert-dell-laptop[00m:[01;34m~/bertvm.cs.uic.edu/old-bert.cs.uic.edu[00m$ ls
+[0m[01;34mcs251[0m  [01;34mDesktop[0m  [01;34mgit[0m
+]0;hbudzik@hubert-dell-laptop: ~/bertvm.cs.uic.edu/old-bert.cs.uic.edu[01;32mhbudzik@hubert-dell-laptop[00m:[01;34m~/bertvm.cs.uic.edu/old-bert.cs.uic.edu[00m$ cd ..
+]0;hbudzik@hubert-dell-laptop: ~/bertvm.cs.uic.edu[01;32mhbudzik@hubert-dell-laptop[00m:[01;34m~/bertvm.cs.uic.edu[00m$ git s[Kstatus
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	[31mdeleted:    "old-bert.cs.uic.edu/Microsoft_Edge_\342\200\21602_\342\200\21622_\342\200\2162018.html"[m
+	[31mdeleted:    old-bert.cs.uic.edu/NewDatabase.kdbx[m
+	[31mmodified:   typescript[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	[31m"Microsoft_Edge_\342\200\21602_\342\200\21622_\342\200\2162018.html"[m
+	[31mNewDatabase.kdbx[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+]0;hbudzik@hubert-dell-laptop: ~/bertvm.cs.uic.edu[01;32mhbudzik@hubert-dell-laptop[00m:[01;34m~/bertvm.cs.uic.edu[00m$ git add .
+]0;hbudzik@hubert-dell-laptop: ~/bertvm.cs.uic.edu[01;32mhbudzik@hubert-dell-laptop[00m:[01;34m~/bertvm.cs.uic.edu[00m$ git commit -m " moved files"
+[master c7bd0db]  moved files
+ 3 files changed, 169 insertions(+), 26 deletions(-)
+ rename "old-bert.cs.uic.edu/Microsoft_Edge_\342\200\21602_\342\200\21622_\342\200\2162018.html" => "Microsoft_Edge_\342\200\21602_\342\200\21622_\342\200\2162018.html" (100%)
+ rename old-bert.cs.uic.edu/NewDatabase.kdbx => NewDatabase.kdbx (100%)
+]0;hbudzik@hubert-dell-laptop: ~/bertvm.cs.uic.edu[01;32mhbudzik@hubert-dell-laptop[00m:[01;34m~/bertvm.cs.uic.edu[00m$ git push origin master
+Username for 'https://github.com': hbudzik2 
+Password for 'https://hbudzik@github.com': 
+Counting objects: 9, done.
+Delta compression using up to 4 threads.
+Compressing objects:  11% (1/9)   Compressing objects:  22% (2/9)   Compressing objects:  33% (3/9)   Compressing objects:  44% (4/9)   Compressing objects:  55% (5/9)   Compressing objects:  66% (6/9)   Compressing objectk-05-wed.pptx
+ create mode 100644 cs251/LectureNotes/week-06/Week-06-WED.pptx
+ create mode 100644 cs251/Staff.pdf
+ create mode 100644 cs251/Written/Written-HW-01-SAMPLE-SOLN.docx
+ create mode 100644 "old-bert.cs.uic.edu/Microsoft_Edge_\342\200\21602_\342\200\21622_\342\200\2162018.html"
+ create mode 100644 old-bert.cs.uic.edu/NewDatabase.kdbx
+]0;hbudzik@hubert-dell-laptop: ~/bertvm.cs.uic.edu[01;32mhbudzik@hubert-dell-laptop[00m:[01;34m~/bertvm.cs.uic.edu[00m$ ls
+[0m[01;34mcs[0m  [01;34mcs151[0m  [01;34mcs251[0m  end  [01;34mold-bert.cs.uic.edu[0m  playlists  [01;32mscript[0m  typescript
+]0;hbudzik@hubert-dell-laptop: ~/bertvm.cs.uic.edu[01;32mhbudzik@hubert-dell-laptop[00m:[01;34m~/bertvm.cs.uic.edu[00m$ ls
+[0m[01;34mcs[0m  [01;34mcs151[0m  [01;34mcs251[0m  end  [01;34mold-bert.cs.uic.edu[0m  playlists  [01;32mscript[0m  typescript
+]0;hbudzik@hubert-dell-laptop: ~/bertvm.cs.uic.edu[01;32mhbudzik@hubert-dell-laptop[00m:[01;34m~/bertvm.cs.uic.edu[00m$ git ls
+git: 'ls' is not a git command. See 'git --help'.
+
+Did you mean this?
+	log
+]0;hbudzik@hubert-dell-laptop: ~/bertvm.cs.uic.edu[01;32mhbudzik@hubert-dell-laptop[00m:[01;34m~/bertvm.cs.uic.edu[00m$ cd [K[K[Kls
+[0m[01;34mcs[0m  [01;34mcs151[0m  [01;34mcs251[0m  end  [01;34mold-bert.cs.uic.edu[0m  playlists  [01;32mscript[0m  typescript
+]0;hbudzik@hubert-dell-laptop: ~/bertvm.cs.uic.edu[01;32mhbudzik@hubert-dell-laptop[00m:[01;34m~/bertvm.cs.uic.edu[00m$ cd old-bert.cs.uic.edu/
+]0;hbudzik@hubert-dell-laptop: ~/bertvm.cs.uic.edu/old-bert.cs.uic.edu[01;32mhbudzik@hubert-dell-laptop[00m:[01;34m~/bertvm.cs.uic.edu/old-bert.cs.uic.edu[00m$ ls
+[0m[01;34mcs251[0m  [01;34mDesktop[0m  [01;34mgit[0m  Microsoft_Edge_‎02_‎22_‎2018.html  NewDatabase.kdbx
+]0;hbudzik@hubert-dell-laptop: ~/bertvm.cs.uic.edu/old-bert.cs.uic.edu[01;32mhbudzik@hubert-dell-laptop[00m:[01;34m~/bertvm.cs.uic.edu/old-bert.cs.uic.edu[00m$ mv Microsoft_Edge_‎02_‎22_‎2018.html  ../
+]0;hbudzik@hubert-dell-laptop: ~/bertvm.cs.uic.edu/old-bert.cs.uic.edu[01;32mhbudzik@hubert-dell-laptop[00m:[01;34m~/bertvm.cs.uic.edu/old-bert.cs.uic.edu[00m$ mv NewDatabase.kdbx .//[K[K./
+]0;hbudzik@hubert-dell-laptop: ~/bertvm.cs.uic.edu/old-bert.cs.uic.edu[01;32mhbudzik@hubert-dell-laptop[00m:[01;34m~/bertvm.cs.uic.edu/old-bert.cs.uic.edu[00m$ ls
+[0m[01;34mcs251[0m  [01;34mDesktop[0m  [01;34mgit[0m
+]0;hbudzik@hubert-dell-laptop: ~/bertvm.cs.uic.edu/old-bert.cs.uic.edu[01;32mhbudzik@hubert-dell-laptop[00m:[01;34m~/bertvm.cs.uic.edu/old-bert.cs.uic.edu[00m$ cd ..
+]0;hbudzik@hubert-dell-laptop: ~/bertvm.cs.uic.edu[01;32mhbudzik@hubert-dell-laptop[00m:[01;34m~/bertvm.cs.uic.edu[00m$ git s[Kstatus
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	[31mdeleted:    "old-bert.cs.uic.edu/Microsoft_Edge_\342\200\21602_\342\200\21622_\342\200\2162018.html"[m
+	[31mdeleted:    old-bert.cs.uic.edu/NewDatabase.kdbx[m
+	[31mmodified:   typescript[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	[31m"Microsoft_Edge_\342\200\21602_\342\200\21622_\342\200\2162018.html"[m
+	[31mNewDatabase.kdbx[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+]0;hbudzik@hubert-dell-laptop: ~/bertvm.cs.uic.edu[01;32mhbudzik@hubert-dell-laptop[00m:[01;34m~/bertvm.cs.uic.edu[00m$ git add .
+]0;hbudzik@hubert-dell-laptop: ~/bertvm.cs.uic.edu[01;32mhbudzik@hubert-dell-laptop[00m:[01;34m~/bertvm.cs.uic.edu[00m$ git commit -m " moved files"
+[master c7bd0db]  moved files
+ 3 files changed, 169 insertions(+), 26 deletions(-)
+ rename "old-bert.cs.uic.edu/Microsoft_Edge_\342\200\21602_\342\200\21622_\342\200\2162018.html" => "Microsoft_Edge_\342\200\21602_\342\200\21622_\342\200\2162018.html" (100%)
+ rename old-bert.cs.uic.edu/NewDatabase.kdbx => NewDatabase.kdbx (100%)
+]0;h

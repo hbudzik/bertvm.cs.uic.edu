@@ -1,0 +1,55 @@
+
+
+
+Today you have three choices; the first two are related to GridWorld; 
+the third is a homework problem from a previous equivalent of your HW2.
+
+Recommendations:
+
+    If you are still trying to get your head around a solution to
+    GridWorld -- OPTION 1 if for you!
+
+    If you pretty much know what you need to do for GridWorld and
+    are eager to get started on the coding -- OPTION 2 is for you!
+
+    If you pretty much know what you need to do for GridWorld but for
+    whatever reason don't feel like coding right now, try OPTION-3!
+
+
+    OPTION-1:
+
+         using a sequence of detailed diagrams, including arrows for
+         all pointers, etc. simulate the following sequence of operations
+         on a gridworld with R=2 X C=2:
+
+
+              birth 0 0
+              birth 1 1
+              birth 1 0
+              birth 0 1
+              move 0 1 1
+              birth 1 1
+              death 1
+              death 2
+              birth 0 1
+              birth 1 1
+              move 4 0 1
+              birth 1 1
+
+
+         Include in your drawings:  the 2D array data structure, the array of
+         people data structure (indexed by id), the deadpool, etc.
+
+         Follow the ordering rules and the policy for recycling IDs.
+
+         There is nothing magic about the sequence above -- feel free to try
+         different sequences.
+
+    2) If you have already dug into the assignment and have already done the
+       equivalent of the above, feel free to forge ahead in your GridWorld 
+       implementation.
+
+    3) See the document in this directory called MaxOverlapProblem.  You will
+       find an interesting problem that can be solved by sorting.  It has been
+       used on previous versions of HW2.  You might find it interesting....
+
