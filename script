@@ -11,7 +11,7 @@ read something		#reads user input
 
 
 if [ "$something" = "1" ]; then
-	echo "its push (might need login/passwd)"
+	echo "its push (might need login/passwd) (might need login/passwd)"
 	git push origin master
 	
 elif [ "$something" = "2" ]; then
