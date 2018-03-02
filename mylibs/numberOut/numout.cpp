@@ -18,17 +18,19 @@ cout << endl;
 int x;				//variable to be printed
 srand(time(0));			//makes numbers be random each time
 
-for (int n=0; n<data; n++){
+for (int n=0; n<data; n++)
+{
     x = rand() % 100 + 1;	//assigns random number to x
 
-     if(n%4 == 0)		//every few numbers skip a line
+     if(n%10 == 0)		//every two numbers skip a line
     {
         cout << endl;
     }
 
     cout << x << "\t";		//prints that number
 
-   
 }
+cout << endl;
 
+return 0;
 }
