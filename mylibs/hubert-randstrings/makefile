@@ -1,5 +1,5 @@
-stringOut: stringOut.cpp
-	g++ -o stringOut stringOut.cpp -std=c++11
+hubert-randstrings: hubert-randstrings.cpp
+	g++ -o hubert-randstrings hubert-randstrings.cpp -std=c++11
 
 clean:
-	rm stringOut
+	rm hubert-randstrings
