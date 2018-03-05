@@ -75,6 +75,6 @@ for(int z=1; z < argc; z++)
 	}
 
 	//adds ending symbol
-	cout << endl << "END" << endl;
+	cout << endl << "-999" << endl;
 	return 0;
 }
