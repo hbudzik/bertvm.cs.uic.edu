@@ -1,0 +1,91 @@
+[ 6 3 3 5 3 8 2 5 ]
+[ 6 3 3 5 3 8 2 5 1 2 3 4 ]
+after remove-all(2):
+
+[ 3 3 5 3 8 5 1 3 4 ]
+list lenght? 9
+print list2 now:	[ dd cc bb aa ]
+print list2 reverse	[ aa bb cc dd ]
+list  sorted?  0
+list2 sorted?  0
+list3 sorted?  1
+fiveZ has this mandy 0s:	list2 has this many aa:	list3 has this many bb:	
+
+TESTING equal_to
+list vs list:YES SAME
+list vs listB:not equal
+
+popping back NODE: pop_back 
+current list: [ 3 3 5 3 8 5 1 3 4 ]
+removed back node
+data stored: 4
+list after popped value: 
+[ 3 3 5 3 8 5 1 3 ]
+
+Printing list in reverse RECURSIVLY!
+
+PRINTING LIST original: 
+[ 3 3 5 3 8 5 1 3 ]
+
+PRINTING LIST AFTER reverse() FUNCT, reversing the list
+[ 3 1 5 8 3 5 3 3 ]
+TESTING fast_remove_all(1)
+[ 3 1 5 8 3 5 3 3 ]
+TESTING insert_sorted(sortedList)
+original: [ 1 3 5 7 9 ]
+
+adding 5: [ 1 3 5 6 7 9 ]
+[ -22 1 3 5 6 7 9 ]
+[ -22 1 3 5 6 7 9 66 ]
+
+TESTING concat(list) 
+list2: [ dd cc bb aa ]
+
+list3: [ aa bb cc dd ]
+
+list2.concat(list3): 
+after concat list2 [ dd cc bb aa aa bb cc dd ]
+
+after concat list3 [ ]
+TESTING compare_with(list) 
+other list is lexically before calling list
+TESTING merge_with() function
+list 8: [ 22 12 3 7 2 ]
+
+list 9: [ 10 34 1 3 0 ]
+
+AFTER MERGE: 
+list 8: [ 22 12 3 7 2 10 34 1 3 0 ]
+
+list 9: [ ]
+
+[ 99 ]
+
+TESTING clone() function 
+List->print(): 	[ 3 1 5 8 3 5 3 3 ]
+List clone: 	[ dd cc bb aa aa bb cc dd ]
+
+TESTING prefix() module
+original list: 	[ 3 1 5 8 3 5 3 3 ]
+prefix list: 	
+[ ]
+
+[ 3 1 5 8 3 5 3 3 ]
+
+	*TESTING filter_leq is called with cutoff value 3*
+original list: 	
+[ 4 2 8 5 8 6 5 2 ]
+original list after filter: 	
+[ 6 5 2 ]
+returned list: 	
+[ 4 2 5 5 2 ]
+
+TESTING suffix_maxes() module
+listB: 	
+[ 2 2 1 3 7 3 1 1 ]
+listB after suffix_maxes: 	
+[ 2 2 1 3 7 3 1 1 ]
+new list: 	
+[ 7 7 7 7 7 3 1 1 ]
+list lenght? [ 3 1 5 8 3 5 3 3 ]
+list lenght? 8
