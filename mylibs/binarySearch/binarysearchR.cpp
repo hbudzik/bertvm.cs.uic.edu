@@ -88,6 +88,9 @@ cout << "middle: " << middle << endl << endl;
 int main(int argc, char** argv)
 {
 
+
+
+
 // creating dynamic array
 int n = 4;
 int count = 0; 
