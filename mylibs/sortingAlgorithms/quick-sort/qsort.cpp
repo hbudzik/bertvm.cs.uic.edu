@@ -13,8 +13,8 @@ void arrPrint(int *arr);
 void arrpopulate(int* &arr, int n, int &count);
 
 
-//merge sort method
-void msort_intR(int* &arr, int lo, int hi, int* &scratch);
+//quick sort 
+void qsort(int* &arr, int l, int r);
 
 
 int main(int argc, char** argv)
@@ -49,15 +49,12 @@ arrpopulate(arr, n, count);
 
 //prints out the array
 //cout << "original array count: " << count << endl;
-//arrPrint(arr);
-
-//sort the array using mergesort method
+arrPrint(arr);
 
 cout << "count: " << count << endl;
 
-int* scratch = new int[count];
-msort_intR(arr, 0, count -1, scratch);		//count -1 if ending digit -999 is included 
-delete[] scratch;
+//sort using quick sort method
+qsort(arr, 0, count -1);
 
 //prints the list after 
 arrPrint(arr);
@@ -119,57 +116,65 @@ cout << endl;
 return;
 }
 
+//swap function used by qsort
+void swap(int* &arr, int i, int j);
 
-void msort_intR(int* &arr, int lo, int hi, int* &scratch)
+//quick sort 
+void qsort(int* &arr, int l, int r)
 {
-	
-	//base case if list only contains 0 or 1 element than its sorted  
-	if ( lo >= hi ){
-		return; 
-		}
+    int i, j, pivot;
 
-	// "N" = hi-lo +1
-	//spliting the array in half
-	int middle = (hi + lo) / 2;
+    if (r <= l){
+        return;
+    }
+    if (r == l+1){
+        if(arr[l] > arr[r])
+            {
+                swap(arr, l, r);
+            }
+        return;
+    }
 
-	//recursion
-	msort_intR(arr, lo, middle, scratch);
-	msort_intR(arr, middle+1, hi, scratch);
+    //median-of-three
+    //picks 3 numbers and 
+    int middle = (l+r) / 2;
+    if (arr[middle] < arr[l]){
+        swap (arr, l, middle);
+    }
+    if (arr[r] < arr[l]){
+        swap (arr, r, l);
+    }
+    if (arr[r] < arr[middle]){
+        swap (arr, r, middle);
+    }
+    swap(arr, middle, r-1);        // pivot at position r-1, moved from middle(center)
+    pivot = arr[r-1];
+
+    //start sorting 
+    i = l;
+    j= r-1;
+    for(;;){
+        while(arr[++i] < pivot);
+        while(arr[--j] > pivot);
+        if(i >= j){ break; }
+        swap(arr, i, j);
+    }
+    swap(arr, i, r-1);    //replace pivot
+
+    //recursion
+    qsort(arr, l, i-1);
+    qsort(arr, i+1, r);
 
 
-	int i = lo; 			// lhs index
-	int j = middle + 1;		// rhs index
-	int k = 0;				// index into scratch[] array that will temporarly store sorted array
+    return;
+}
 
 
-	while( i <= middle && j <= hi ) {
-			if (arr[i] <= arr[j]) {
-				scratch[k] = arr[i];
-				i++;
-			}
-			else{
-				scratch[k] = arr[j];
-				j++;
-			}
-			k++;
-		}
-	
-	//copy leftovers
-	while ( i <= middle ) {
-		scratch[k] = arr[i];
-		i++;
-		k++;
-	}
-	while (j <= hi) {
-		scratch[k] = arr[j];
-		j++;
-		k++;
-	}
+void swap(int* &arr, int i, int j)
+{
+    int tmp;
 
-	//copy back to an original array
-	for (k = 0, i=lo; i<=hi; i++, k++)
-	{
-		arr[i] = scratch[k];
-	}
-	return;
+    tmp  = arr[i];
+    arr[i] = arr[j];
+    arr[j] = tmp;
 }

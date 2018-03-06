@@ -77,12 +77,7 @@ int* selectionSort(int* &arr, int &count)
 	return newSort;
 }
 
-
-
-
-
-
-				/* *** MAIN START *** */
+		/* *** MAIN START *** */
 int main(int argc, char** argv)
 {
 

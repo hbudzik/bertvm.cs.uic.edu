@@ -60,8 +60,6 @@ int bsearchR(int* &arr, int lo, int hi, int target)
 cout << "lo: " << lo << endl;
 cout << "hi: " << hi << endl;
 
-
-
 int a = 0;
 //base case
 if ( hi<lo )
@@ -87,9 +85,6 @@ cout << "middle: " << middle << endl << endl;
 				/* *** MAIN START *** */
 int main(int argc, char** argv)
 {
-
-
-
 
 // creating dynamic array
 int n = 4;

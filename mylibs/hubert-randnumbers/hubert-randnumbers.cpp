@@ -57,7 +57,7 @@ for (int i=0; i<n; i++)
     cout << x << "\t";		//prints that number
 
 }
-cout << "-999"; //adds -999 to the end of list, used as stop signal for other apps
+cout << "-999"; 	//adds -999 to the end of list, used as stop signal for some or other apps
 cout << endl;
 
 return 0;
