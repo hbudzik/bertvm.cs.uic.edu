@@ -43,7 +43,7 @@ return;
 // this function will print out he list
 void arrPrint(int *arr)
 {
-	int i = 0; 
+	int i = 1; 
 	do{
 	   cout << arr[i] << "\t";
 	   if (i % 10 == 0)
@@ -83,14 +83,14 @@ return newSort;
 }
 
 
-
-
-
-
-				/* *** MAIN START *** */
+	/* *** MAIN START *** */
 int main(int argc, char** argv)
 {
 
+if ( argc == 1 )
+	{
+		cout << "takes a list of elements and sorts them";
+	}
 // creating dynamic array
 int n = 4;
 int count = -1; 
