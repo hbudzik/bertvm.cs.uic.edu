@@ -47,7 +47,7 @@ srand(time(0));			//makes numbers be random each time
 
 for (int i=0; i<n; i++)
 {
-    x = rand() % 100 + 1;	//assigns random number to x
+    x = rand() % 1000 + 1;	//assigns random number to x
 
      if(i%10 == 0)		//every two numbers skip a line
     {
