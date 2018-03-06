@@ -1,6 +1,6 @@
 #include <iostream>
 #include <ctime>	// for srand seed
-#include <cstdlib> // for strtoi  string to integer convertion
+#include <cstdlib> // for stoi  string to integer convertion
 
 
 using namespace std;
