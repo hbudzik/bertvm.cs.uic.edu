@@ -1,4 +1,8 @@
 
+
+#ifndef __GW_INTERFACE_H
+#define __GW_INTERFACE_H
+
 #include <vector>
 #include <iostream>
 
@@ -106,4 +110,6 @@ class GWInterface {
 //   needed for destructor of subclasses to work.
 GWInterface::~GWInterface() {};
 
+
+#endif
 

@@ -196,6 +196,7 @@ int main(){
 
   cout << "    birth <row> <col>\n";
   cout << "    death <id>\n";
+  cout << "    move <id> <targe-row> <target-col>\n";
   cout << "    members <row> <col>\n";
   cout << "    whereis <id> \n";
   cout << "    population \n";
