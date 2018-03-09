@@ -9,7 +9,42 @@
 using std::vector;
 bool debugg = false;
 
-class GridWorld : public GWInterface {
+class GridWorld : public GWInterface 
+{
+  private:
+  // private stuff goes here!
+    //   data members
+    int ** grid;          //creates pointer to the grid
+    int totR;             //number of rows in the world                      
+    int totC;             //number of columns in the world
+    int totPop;
+   /*
+   * Creates a node called DYSTRICT that will contain a list of population in that district
+   */
+   // struct for double-linked list nodes
+  struct Dystrict{
+    int pop;  //population in the district
+    //List members;
+    
+  };
+
+
+  struct Person{
+    int r, c;     //where they live
+    bool alive;
+  };
+
+  struct Members{
+    int id;
+    Members* next;
+    Members* prev;
+  };
+
+    //   typedefs
+    //   private helper functions
+    //   etc.
+
+ 
 
   public:
     GridWorld(unsigned nrows, unsigned ncols)   {
@@ -50,26 +85,33 @@ class GridWorld : public GWInterface {
         }
     std::cout << std::endl;
     }
-    std::cout << "exiting.. GridWord::GridWorld constructor" << std::endl;
+    std::cout << "exiting.. GridWord::GridWorld constructor\n" << std::endl;
     }
 //end debugg
     }
-    ~GridWorld(){
-    (debugg == true)  ? std::cout << "calling.. ~GridWord::GridWorld (not implemented yet)\n" 
-                      : std::cout << " "; 
+    ~GridWorld() {
+(debugg == true)  ? std::cout << "\ncalling.. ~GridWord::GridWorld\n" 
+                  : std::cout << " "; 
       // your destructor code here.
-      (debugg == true)  ? std::cout << "\tdeleting grid[pointers]\n" 
-                        : std::cout << " ";
+(debugg == true)  ? std::cout << "\tdeleting grid[pointers]\n" 
+                  : std::cout << " ";
+                        
       for (int row = 0; row < totR; row++){
-        (debugg == true)  ? std::cout << "\t\tdeleting grid[" << row << "]\n" : std::cout << " ";
+(debugg == true)  ? std::cout << "\t\tdeleting grid[" << row << "]\n" : std::cout << " ";
           delete grid[row];
         }
-      
-      (debugg == true)  ? std::cout << "\tdeleting grid\n" : std::cout;
+        
+(debugg == true)  ? std::cout << "\tdeleting grid\n" : std::cout << " ";
       delete grid;
-    }
+
+(debugg == true)  ? std::cout << "exiting.. ~GridWord::GridWorld\n" : std::cout << " ";
+    }//end ~gridWorld
 
     bool birth(int row, int col, int &id){
+
+     // PERSON * id = new PERSON;
+      
+
       return false;
     }
 
@@ -112,29 +154,5 @@ class GridWorld : public GWInterface {
     return;
   }
 
-  private:
-  // private stuff goes here!
-
-  /*
-   * Creates a node called DYSTRICT that will contain a list of population in that district
-   */
-  struct DYSTRICT{
-      int r, c;
-
-      DYSTRICT * next = nullptr;
-      DYSTRICT * prev = nullptr;
-  };
-
-    //   typedefs
-
-    //   data members
-    int ** grid;
-
-    int totR; //number of rows in the world                      
-    int totC; //number of columns in the world
-
-    //   private helper functions
-
-    //   etc.
-
+  
 };

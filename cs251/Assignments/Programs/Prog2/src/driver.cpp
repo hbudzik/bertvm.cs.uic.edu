@@ -188,12 +188,15 @@ CmdResult eval_cmd(GWInterface *gw, const string &cmd, int args[], int nargs) {
  */
 int main(int argc, char** argv){
   //checks for debugg option 
+  if (argc >= 2){
   if (argv[1][0] == '-' && argv[1][1] == 'd'){
     debugg = true;
   }
+  }
+
 (debugg == true) ? cout << "debugg is ON \n" : cout << "debugg is OFF \n";
 
-  GWInterface *gw = new GridWorld(5, 5);
+  GWInterface *gw = new GridWorld(1, 1);
   string line;
 
   cout << "Welcome to the GridWorld Interactive Frontend\n";
