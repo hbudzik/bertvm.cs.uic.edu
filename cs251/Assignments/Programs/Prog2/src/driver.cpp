@@ -9,6 +9,7 @@ using std::cout;
 using std::cin;
 using std::string;
 
+
 /**
  * simple driver program exercising some of the 
  *   member functions in GridWorld.
@@ -185,7 +186,13 @@ CmdResult eval_cmd(GWInterface *gw, const string &cmd, int args[], int nargs) {
  * Recommendation:  why not modify so you can take command-line
  *  arguments specifying the grid dimensions?
  */
-int main(){
+int main(int argc, char** argv){
+  //checks for debugg option 
+  if (argv[1][0] == '-' && argv[1][1] == 'd'){
+    debugg = true;
+  }
+(debugg == true) ? cout << "debugg is ON \n" : cout << "debugg is OFF \n";
+
   GWInterface *gw = new GridWorld(5, 5);
   string line;
 
