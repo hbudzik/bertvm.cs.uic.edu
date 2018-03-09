@@ -196,7 +196,7 @@ int main(int argc, char** argv){
 
 (debugg == true) ? cout << "debugg is ON \n" : cout << "debugg is OFF \n";
 
-  GWInterface *gw = new GridWorld(1, 1);
+  GWInterface *gw = new GridWorld(3, 3);
   string line;
 
   cout << "Welcome to the GridWorld Interactive Frontend\n";

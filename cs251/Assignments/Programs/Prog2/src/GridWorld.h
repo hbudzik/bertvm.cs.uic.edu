@@ -13,33 +13,33 @@ class GridWorld : public GWInterface
 {
   private:
   // private stuff goes here!
-    //   data members
-    int ** grid;          //creates pointer to the grid
-    int totR;             //number of rows in the world                      
-    int totC;             //number of columns in the world
-    int totPop;
-   /*
-   * Creates a node called DYSTRICT that will contain a list of population in that district
-   */
+  typedef struct Members{
+    int id;
+    Members* next = nullptr;
+    Members* prev = nullptr;
+    }MEMBERS;
+
    // struct for double-linked list nodes
-  struct Dystrict{
-    int pop;  //population in the district
-    //List members;
-    
-  };
+    typedef struct District_NODE{
+    int districtPopulation;  //population in the district
+    struct Members* front = nullptr;
+    struct Members* back = nullptr;
+    }DISTRICT;
 
 
-  struct Person{
+  typedef struct Person{
     int r, c;     //where they live
     bool alive;
-  };
+  }PERSON;
 
-  struct Members{
-    int id;
-    Members* next;
-    Members* prev;
-  };
-
+ 
+  
+   //   data members
+    DISTRICT** pgrid;     //creates pointer to the grid
+    int totR;             //number of rows in the world                      
+    int totC;             //number of columns in the world
+    int totPopulation;           //number of people in the world
+    int ID;           //ID of member
     //   typedefs
     //   private helper functions
     //   etc.
@@ -61,14 +61,18 @@ class GridWorld : public GWInterface
 (debugg == true) ? std::cout << "\t- initializing arr[" << nrows << "][" << ncols << "]\n" 
                  : std::cout << " ";
 //debugg end
+      
+      //creating District 
        //initializing grid 
-      grid = new int* [nrows];
+      pgrid = new DISTRICT* [nrows];
+      
       for (int row = 0; row < nrows; row++){
-        grid[row] = new int[ncols];
+        pgrid[row] = new DISTRICT[ncols];
+        std::cout << "\t\tinitialized\n";
       }
-   
-//debugg start
+    //debugg start
     //populates with random shit and prits it out
+    /*
     if (debugg == true){
       int n = 0;
        for (int i = 0; i < nrows; i++){
@@ -87,8 +91,10 @@ class GridWorld : public GWInterface
     }
     std::cout << "exiting.. GridWord::GridWorld constructor\n" << std::endl;
     }
-//end debugg
+    //end debugg
+    */
     }
+
     ~GridWorld() {
 (debugg == true)  ? std::cout << "\ncalling.. ~GridWord::GridWorld\n" 
                   : std::cout << " "; 
@@ -98,25 +104,68 @@ class GridWorld : public GWInterface
                         
       for (int row = 0; row < totR; row++){
 (debugg == true)  ? std::cout << "\t\tdeleting grid[" << row << "]\n" : std::cout << " ";
-          delete grid[row];
+          delete pgrid[row];
         }
         
 (debugg == true)  ? std::cout << "\tdeleting grid\n" : std::cout << " ";
-      delete grid;
+      delete pgrid;
 
 (debugg == true)  ? std::cout << "exiting.. ~GridWord::GridWorld\n" : std::cout << " ";
     }//end ~gridWorld
 
     bool birth(int row, int col, int &id){
-
+      (debugg == true) ? std::cout << "calling.. GridWord::birth()\n" : std::cout << " ";
      // PERSON * id = new PERSON;
+     
+     //if its the first node added
+     if ( pgrid[row][col].front == nullptr ) {
+       totPopulation = 1; //starts counting total population
+       //updates front and back pointers of DISTRICT struct
+       //since there is only one NODE both front and back point to the same NODE
+       (debugg == true) ? std::cout << "\tcreating FIRST NODE... \n" : std::cout << " ";
+        pgrid[row][col].districtPopulation = 1;   //begins counting population in current district
+        pgrid[row][col].front = new MEMBERS;
+        pgrid[row][col].back = pgrid[row][col].front;
+       //updates next and prev pointers of MEMBERS struct
+       (debugg == true) ? std::cout << "\tupdating front and back pointers in DISTRICT \n" : std::cout << " ";
+        pgrid[row][col].front->next = nullptr;
+        pgrid[row][col].front->prev = nullptr;
+
+        //updating new member ID 
+        (debugg == true) ? std::cout << "\tupdating new member ID now( NOT IMPLEMENTED PROPERLY) \n" : std::cout << " ";
+        pgrid[row][col].front->id = ID;
+        id = ID;
+        ID++;     //updates list 
+     }
+     else {
+       (debugg == true) ? std::cout << "\tadding ANOTHER NODE\n" : std::cout << " ";
+        //create new node
+        MEMBERS* tmp = new MEMBERS;
+        (debugg == true) ? std::cout << "\tupdating next and prev in MEMBERS struct, and back pointers in DISTRICT\n" : std::cout << " ";
+        tmp->next = nullptr;  //setting next pointer to null since its the last node
+        tmp->prev = pgrid[row][col].back; //poiting to previous node
+                //assigning ID to new members
+        totPopulation++;  //updating total population
+        //updating the back pointer
+        pgrid[row][col].back->next = nullptr;
+
+        //updating new member ID
+        (debugg == true) ? std::cout << "\tupdating new member ID now( NOT IMPLEMENTED PROPERLY) \n" : std::cout << " ";
+        pgrid[row][col].back->id = ID;
+        id = ID;
+        ID++;     //updates list 
+        
+
+
       
 
-      return false;
-    }
+     }
+
+      return true;
+    }//end birth()
 
     bool death(int personID){
-
+      
       return false;
     }
 
@@ -134,7 +183,7 @@ class GridWorld : public GWInterface
     }
 
     int population()const{
-      return 0;
+      return totPopulation;
     }
     
     int population(int row, int col)const{
