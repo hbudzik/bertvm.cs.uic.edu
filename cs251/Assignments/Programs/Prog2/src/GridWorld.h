@@ -3,13 +3,13 @@
 #include <vector>
 #include <iostream>
 
-//                 (debugg == true) ? std::cout << " \n" 
+//                 (debugg == true) ? std::cout << " \n"
 //                                    : std::cout;
 
 using std::vector;
 bool debugg = false;
 
-class GridWorld : public GWInterface 
+class GridWorld : public GWInterface
 {
   private:
   // private stuff goes here!
@@ -21,7 +21,9 @@ class GridWorld : public GWInterface
 
    // struct for double-linked list nodes
     typedef struct District_NODE{
-    int districtPopulation;  //population in the district
+    //vector to keep track of members ID and for quick access
+    vector<int> memberList(2);  //setting size to 2 MEMBERS
+    int districtPopulation;;  //population in the district
     struct Members* front = nullptr;
     struct Members* back = nullptr;
     }DISTRICT;
@@ -32,11 +34,11 @@ class GridWorld : public GWInterface
     bool alive;
   }PERSON;
 
- 
-  
+
+
    //   data members
     DISTRICT** pgrid;     //creates pointer to the grid
-    int totR;             //number of rows in the world                      
+    int totR;             //number of rows in the world
     int totC;             //number of columns in the world
     int totPopulation;           //number of people in the world
     int ID;           //ID of member
@@ -44,12 +46,12 @@ class GridWorld : public GWInterface
     //   private helper functions
     //   etc.
 
- 
+
 
   public:
     GridWorld(unsigned nrows, unsigned ncols)   {
 //debugg start
-(debugg == true)  ? std::cout << "calling.. GridWord::GridWorld(" << nrows << ", " << ncols << ")\n" 
+(debugg == true)  ? std::cout << "calling.. GridWord::GridWorld(" << nrows << ", " << ncols << ")\n"
                       : std::cout << " ";
 //debugg end
       // your constructor code here!
@@ -58,14 +60,14 @@ class GridWorld : public GWInterface
 
       // creating a 2D array using nrows and ncols parameters
 //debugg start
-(debugg == true) ? std::cout << "\t- initializing arr[" << nrows << "][" << ncols << "]\n" 
+(debugg == true) ? std::cout << "\t- initializing arr[" << nrows << "][" << ncols << "]\n"
                  : std::cout << " ";
 //debugg end
-      
-      //creating District 
-       //initializing grid 
+
+      //creating District
+       //initializing grid
       pgrid = new DISTRICT* [nrows];
-      
+
       for (int row = 0; row < nrows; row++){
         pgrid[row] = new DISTRICT[ncols];
         std::cout << "\t\tinitialized\n";
@@ -78,7 +80,7 @@ class GridWorld : public GWInterface
        for (int i = 0; i < nrows; i++){
         for (int j = 0; j < ncols; j++){
           grid[i][j] = n;
-          n++; 
+          n++;
         }
       }
 
@@ -96,17 +98,18 @@ class GridWorld : public GWInterface
     }
 
     ~GridWorld() {
-(debugg == true)  ? std::cout << "\ncalling.. ~GridWord::GridWorld\n" 
-                  : std::cout << " "; 
-      // your destructor code here.
-(debugg == true)  ? std::cout << "\tdeleting grid[pointers]\n" 
+(debugg == true)  ? std::cout << "\ncalling.. ~GridWord::GridWorld\n"
                   : std::cout << " ";
-                        
+      // your destructor code here.
+(debugg == true)  ? std::cout << "\tdeleting grid[pointers]\n"
+                  : std::cout << " ";
+
       for (int row = 0; row < totR; row++){
 (debugg == true)  ? std::cout << "\t\tdeleting grid[" << row << "]\n" : std::cout << " ";
+          
           delete pgrid[row];
         }
-        
+
 (debugg == true)  ? std::cout << "\tdeleting grid\n" : std::cout << " ";
       delete pgrid;
 
@@ -116,7 +119,7 @@ class GridWorld : public GWInterface
     bool birth(int row, int col, int &id){
       (debugg == true) ? std::cout << "calling.. GridWord::birth()\n" : std::cout << " ";
      // PERSON * id = new PERSON;
-     
+
      //if its the first node added
      if ( pgrid[row][col].front == nullptr ) {
        totPopulation = 1; //starts counting total population
@@ -131,11 +134,11 @@ class GridWorld : public GWInterface
         pgrid[row][col].front->next = nullptr;
         pgrid[row][col].front->prev = nullptr;
 
-        //updating new member ID 
+        //updating new member ID
         (debugg == true) ? std::cout << "\tupdating new member ID now( NOT IMPLEMENTED PROPERLY) \n" : std::cout << " ";
         pgrid[row][col].front->id = ID;
         id = ID;
-        ID++;     //updates list 
+        ID++;     //updates list
      }
      else {
        (debugg == true) ? std::cout << "\tadding ANOTHER NODE\n" : std::cout << " ";
@@ -153,11 +156,11 @@ class GridWorld : public GWInterface
         (debugg == true) ? std::cout << "\tupdating new member ID now( NOT IMPLEMENTED PROPERLY) \n" : std::cout << " ";
         pgrid[row][col].back->id = ID;
         id = ID;
-        ID++;     //updates list 
-        
+        ID++;     //updates list
 
 
-      
+
+
 
      }
 
@@ -165,7 +168,7 @@ class GridWorld : public GWInterface
     }//end birth()
 
     bool death(int personID){
-      
+
       return false;
     }
 
@@ -185,7 +188,7 @@ class GridWorld : public GWInterface
     int population()const{
       return totPopulation;
     }
-    
+
     int population(int row, int col)const{
       return 0;
     }
@@ -203,5 +206,5 @@ class GridWorld : public GWInterface
     return;
   }
 
-  
+
 };
