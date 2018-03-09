@@ -20,6 +20,14 @@ void qsort(int* &arr, int l, int r);
 int main(int argc, char** argv)
 {
 
+if ( argc == 1)
+{	
+	
+	cout << "no input" << endl;
+	return 0;
+}
+
+
 for (int z = 1; z < argc; z++)
 {
 	//processing input flags
