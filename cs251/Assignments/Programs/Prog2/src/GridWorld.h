@@ -22,7 +22,7 @@ class GridWorld : public GWInterface
    // struct for double-linked list nodes
     typedef struct District_NODE{
     //vector to keep track of members ID and for quick access
-    vector<int> memberList(2);  //setting size to 2 MEMBERS
+    //vector<int> memberList(2);  //setting size to 2 MEMBERS
     int districtPopulation;;  //population in the district
     struct Members* front = nullptr;
     struct Members* back = nullptr;
@@ -106,7 +106,7 @@ class GridWorld : public GWInterface
 
       for (int row = 0; row < totR; row++){
 (debugg == true)  ? std::cout << "\t\tdeleting grid[" << row << "]\n" : std::cout << " ";
-          
+
           delete pgrid[row];
         }
 
