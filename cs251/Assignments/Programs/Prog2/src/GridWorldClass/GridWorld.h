@@ -68,6 +68,7 @@ class district
       NODE* prev = nullptr;
     };
     //vector storing all the members in this district by their IDs
+
     vector<int> *distMembers = new vector<int>(5);
 
   public:
@@ -163,6 +164,7 @@ class district
         this->back = this->back->next;
         return;
     }
+    
 };
 
 
