@@ -189,7 +189,7 @@ class GridWorld : public GWInterface
       // your destructor code here.
       for (int row = 0; row < totR; row++){
       (debugg == true)  ? std::cout << "\t\tdeleting grid[" << row << "]\n" : std::cout << " ";
-        delete world[row];
+        delete [] world[row];
       }
 
       (debugg == true)  ? std::cout << "\tdeleting grid\n" : std::cout << " ";
