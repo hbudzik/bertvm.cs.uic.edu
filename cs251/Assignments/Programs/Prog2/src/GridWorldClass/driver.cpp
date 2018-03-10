@@ -1,5 +1,5 @@
 
-#include "gwA.h"
+#include "GridWorld.h"
 #include <string>
 #include <iostream>
 #include <sstream>
@@ -8,6 +8,7 @@
 using std::cout;
 using std::cin;
 using std::string;
+
 
 /**
  * simple driver program exercising some of the 
@@ -185,8 +186,17 @@ CmdResult eval_cmd(GWInterface *gw, const string &cmd, int args[], int nargs) {
  * Recommendation:  why not modify so you can take command-line
  *  arguments specifying the grid dimensions?
  */
-int main(){
-  GWInterface *gw = new gwA(5, 5);
+int main(int argc, char** argv){
+  //checks for debugg option 
+  if (argc >= 2){
+  if (argv[1][0] == '-' && argv[1][1] == 'd'){
+    debugg = true;
+  }
+  }
+
+(debugg == true) ? cout << "debugg is ON \n" : cout << "debugg is OFF \n";
+
+  GWInterface *gw = new GridWorld(3, 3);
   string line;
 
   cout << "Welcome to the GridWorld Interactive Frontend\n";
@@ -196,6 +206,7 @@ int main(){
 
   cout << "    birth <row> <col>\n";
   cout << "    death <id>\n";
+  cout << "    move <id> <targe-row> <target-col>\n";
   cout << "    members <row> <col>\n";
   cout << "    whereis <id> \n";
   cout << "    population \n";
@@ -240,6 +251,6 @@ int main(){
   } while(!done && !cin.eof());
 
   delete gw;
-
+  (debugg == true) ? cout << "\n*** DONE ***\n" : cout << "";
   return 0;
 }

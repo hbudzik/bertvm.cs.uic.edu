@@ -45,7 +45,8 @@ void arrPrint(int *arr)
 {
 	int i = 0; 
 	do{
-	   cout << arr[i] << "\t";
+	   cout << arr[i]
+<< "\t";
 	   if (i % 10 == 0)
 	   {
 	      cout << endl;
@@ -56,38 +57,27 @@ return;
 }
 
 
-// this will be used by isort function
-//void insert(int* &arr, int &count)
-
-
 // this function will sort the list using select sort algorithm 
-int* isort(int* &arr, int &count)
+int* selectionSort(int* &arr, int &count)
 {
 	int* newSort = arr;
 	int tmp;
-
-	for (int i=0; i < count; i++)
+	cout << "count: " << count << endl;
+	for(int i=0; i < count - 1; i++)
 	{
-		//insert(newSort, i);
-		int x = arr[i];
-		int j = i -1;
-		while( j>=0 && x<arr[j] )
+		for (int j=i+1; j < count-1; j++)
 		{
-			arr[j+1] = arr[j];	//slide left to right index, right index is stored in x
-			j--;
+			if ( newSort[j] < newSort[i]){	
+				tmp = newSort[i];
+				newSort[i] = newSort[j];
+				newSort[j] = tmp;
+			}	
 		}
-		arr[j+1] = x;	//previous idex is smaller therefore stopping at a[j+1]
 	}
-
-return newSort;
+	return newSort;
 }
 
-
-
-
-
-
-				/* *** MAIN START *** */
+		/* *** MAIN START *** */
 int main(int argc, char** argv)
 {
 
@@ -99,7 +89,14 @@ int *arr = new int[n];
 // populate the array 
 arrpopulate(arr, n, count);
 
-arrPrint(isort(arr, count));
+// prints the array;
+cout << "Original List: " << endl;
+arrPrint(arr);
+
+cout << "Select sort on List: " << endl;
+
+arrPrint(selectionSort(arr, count));
+
     
 cout << endl;
 return 0;

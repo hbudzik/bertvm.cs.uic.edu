@@ -43,10 +43,9 @@ return;
 // this function will print out he list
 void arrPrint(int *arr)
 {
-	int i = 0; 
+	int i = 1; 
 	do{
-	   cout << arr[i]
-<< "\t";
+	   cout << arr[i] << "\t";
 	   if (i % 10 == 0)
 	   {
 	      cout << endl;
@@ -57,35 +56,41 @@ return;
 }
 
 
+// this will be used by isort function
+//void insert(int* &arr, int &count)
+
+
 // this function will sort the list using select sort algorithm 
-int* selectionSort(int* &arr, int &count)
+int* isort(int* &arr, int &count)
 {
 	int* newSort = arr;
 	int tmp;
-	cout << "count: " << count << endl;
-	for(int i=0; i < count - 1; i++)
+
+	for (int i=0; i < count; i++)
 	{
-		for (int j=i+1; j < count-1; j++)
+		//insert(newSort, i);
+		int x = arr[i];
+		int j = i -1;
+		while( j>=0 && x<arr[j] )
 		{
-			if ( newSort[j] < newSort[i]){	
-				tmp = newSort[i];
-				newSort[i] = newSort[j];
-				newSort[j] = tmp;
-			}	
+			arr[j+1] = arr[j];	//slide left to right index, right index is stored in x
+			j--;
 		}
+		arr[j+1] = x;	//previous idex is smaller therefore stopping at a[j+1]
 	}
-	return newSort;
+
+return newSort;
 }
 
 
-
-
-
-
-				/* *** MAIN START *** */
+	/* *** MAIN START *** */
 int main(int argc, char** argv)
 {
 
+if ( argc == 1 )
+	{
+		cout << "takes a list of elements and sorts them";
+	}
 // creating dynamic array
 int n = 4;
 int count = -1; 
@@ -94,14 +99,7 @@ int *arr = new int[n];
 // populate the array 
 arrpopulate(arr, n, count);
 
-// prints the array;
-cout << "Original List: " << endl;
-arrPrint(arr);
-
-cout << "Select sort on List: " << endl;
-
-arrPrint(selectionSort(arr, count));
-
+arrPrint(isort(arr, count));
     
 cout << endl;
 return 0;
