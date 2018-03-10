@@ -78,7 +78,9 @@ class district
 
     ~district()
     {
-      (debugg == true)  ? std::cout << "\t\t\tinitializing.. ~district()\n" : cout << " ";
+       if (this->front != nullptr){
+      (debugg == true) ? std::cout << "\t\t\t\tremoving member NODE\n" : cout << " ";
+      }
       clean();
     }
 
@@ -109,21 +111,10 @@ class district
       back = nullptr;
     }
 
-    void clean()
-    {
-      //traverses through the member list and frees all the NODE memories
-      while (this->front != nullptr)
-      {
-        if (this->front == this->back){
-          delete this->front;
-          break;
-        }
-        NODE *tmp = this->front;
-        (debugg == true)  ? std::cout << "\t\t\t\tdeleting district member NODE\n" : cout << "";
-        this->front = this->front->next;
-        delete tmp;         //deletes previous NODE
+    void clean(){
+       if (this->front != nullptr){
+      (debugg == true)  ? std::cout << "\t\t\t\tremoving member NODE\n" : cout << " ";
       }
-      return;  
     }
 
     void push_front(int ID)
