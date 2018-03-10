@@ -75,7 +75,7 @@ class district
     //initializes a class
     district()
     {
-      (debugg == true)  ? std::cout << "\t\tinit... district()\n" : cout << " ";      
+      (debugg == true)  ? std::cout << "\t\tinit... district()\n" : cout << " ";
       init();
       //free memory from vector allocation
       delete distMembers;
@@ -87,8 +87,8 @@ class district
       clean();
     }
 
-    //setters 
-    
+    //setters
+
     //getters
 
     int getPop() const
@@ -100,7 +100,7 @@ class district
     {
       return distMembers;
     }
-   
+
 
     void createMember(int ID)
     {
@@ -126,7 +126,7 @@ class district
   private:
     NODE* front;
     NODE* back;
-    
+
 
     void init()
     {
@@ -152,7 +152,7 @@ class district
       this->back = this->front;
       return;
     }
-    
+
     void push_back(int ID)
     {
         NODE* tmp = new NODE;
@@ -164,7 +164,7 @@ class district
         this->back = this->back->next;
         return;
     }
-    
+
 };
 
 
@@ -252,7 +252,7 @@ class GridWorld : public GWInterface
     std::vector<int> * members(int row, int col)const
     {
       vector<int> * ret = world[row][col].memberList();
-     
+
       return ret;
     }
 
