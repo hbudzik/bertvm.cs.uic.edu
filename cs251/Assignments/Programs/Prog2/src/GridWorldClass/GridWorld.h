@@ -31,7 +31,6 @@ class person
     }
 
     //setter functions
-
     void createPerson(int row, int col)
     {
       r = row;
@@ -39,6 +38,21 @@ class person
       alive = true;
     }
     //getter functions
+    int getRow()
+    {
+      return r;
+    }
+
+    int getCol()
+    {
+      return c;
+    }
+
+    void getAlive()
+    {
+      ( alive == true) ? cout << "Alive" << endl : cout << "Dead" << endl;
+      return;
+    }
 };
 
 
@@ -51,6 +65,9 @@ class district
       NODE* next = nullptr;
       NODE* prev = nullptr;
     };
+    //vector storing all the members in this district by their IDs
+    vector<int> distMembers = vector<int>(2);
+
   public:
     //initializes a class
     district()
@@ -61,7 +78,7 @@ class district
 
     ~district()
     {
-      (debugg == true)  ? std::cout << "\t\t\tdestroing a district (NOT IMPLEMENTED)\n" : cout << " ";
+      (debugg == true)  ? std::cout << "\t\t\tinitializing.. ~district()\n" : cout << " ";
       clean();
     }
 
@@ -69,17 +86,14 @@ class district
     {
       if (this->front == nullptr)  { //empty list
         (debugg == true)  ? std::cout << "\t\t\tcreating first member in a district\n" : cout << " ";
-        this->front = new NODE;
-        this->front->id = ID;
-        this->back = this->front;
+        push_front(ID);
+        //updates distMembers with new id
+        distMembers.push_back(ID);
       }else{ //at least one node adds to the back
         (debugg == true)  ? std::cout << "\t\t\tcreating another member in a district\n" : cout << " ";
-        NODE* tmp;
-        //fixing next and prev nodes first
-        this->back->next = tmp;
-        this->back->next->prev = this->back;
-        //updating back pointer
-        this->back = this->back->next;
+        push_back(ID);
+        //updates distMembers with new id
+        distMembers.push_back(ID);
       }
     }
 
@@ -97,8 +111,40 @@ class district
 
     void clean()
     {
-      //to be implemented
+      //traverses through the member list and frees all the NODE memories
+      while (this->front != nullptr)
+      {
+        if (this->front == this->back){
+          delete this->front;
+          break;
+        }
+        NODE *tmp = this->front;
+        (debugg == true)  ? std::cout << "\t\t\t\tdeleting district member NODE\n" : cout << "";
+        this->front = this->front->next;
+        delete tmp;         //deletes previous NODE
+      }
+      return;  
     }
+
+    void push_front(int ID)
+    {
+      this->front = new NODE;
+      this->front->id = ID;
+      this->back = this->front;
+      return;
+    }
+
+    void push_back(int ID)
+      {
+        NODE* tmp = new NODE;
+        tmp->id = ID;
+        tmp->prev = this->back;
+        //fixing next and prev nodes first
+        this->back->next = tmp;
+        //updating back pointer
+        this->back = this->back->next;
+        return;
+      }  
 };
 
 
@@ -112,7 +158,7 @@ class GridWorld : public GWInterface
       int totPopulation = 0;           //number of people in the world
       int IDbookeeping = 0;      //keeps an eye on current ID numbers
       //vector of type person
-      // index is the persons IDs
+      // vector<person> index is the persons IDs
       int vectSize = 2;
       std::vector<person> people = vector<person>(vectSize);
       //   typedefs
@@ -164,12 +210,16 @@ class GridWorld : public GWInterface
       //checks grid size
       if ( gridTest(row, col) == false ) { return false; }
       id = IDbookeeping;
-      (debugg == true)  ? std::cout << "size of vector<people>: " << people.size() << endl : cout << " ";
       //checks people vector and resizes if necessery
         pplVectReSize(IDbookeeping);
+        (debugg == true)  ? std::cout << "size of vector<people>: " << people.size() << endl : cout << " ";
       //adding a person to the world
         personAdd(row, col, IDbookeeping);
-      //updates total population an ID in the world
+        (debugg == true) ? std::cout << " \t\t\t\tID <" << IDbookeeping << "> row: " << people[IDbookeeping].getRow() << endl : std::cout << " ";
+        (debugg == true) ? std::cout << " \t\t\t\tID <" << IDbookeeping << "> col: " << people[IDbookeeping].getCol() << endl : std::cout << " ";
+        (debugg == true) ? std::cout << " \t\t\t\tID <" << IDbookeeping << "> is: " : std::cout << " ";
+        if (debugg == true){ people[IDbookeeping].getAlive(); }
+        //updates total population an ID in the world
         totPopulation++;
         IDbookeeping++;
       return true;
