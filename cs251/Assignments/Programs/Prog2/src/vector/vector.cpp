@@ -5,7 +5,7 @@ using namespace std;
 
 int main(){
 
-	vector<int> list(1);	
+	vector<int> list(3);	
 
 //prints out the vectobreak;
 cout << "vector.size(1): " << list.size() << endl;

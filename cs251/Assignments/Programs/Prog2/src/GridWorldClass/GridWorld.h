@@ -72,6 +72,14 @@ class district
         this->front = new NODE;
         this->front->id = ID;
         this->back = this->front;
+      }else{ //at least one node adds to the back
+        (debugg == true)  ? std::cout << "\t\t\tcreating another member in a district\n" : cout << " ";
+        NODE* tmp;
+        //fixing next and prev nodes first
+        this->back->next = tmp;
+        this->back->next->prev = this->back;
+        //updating back pointer
+        this->back = this->back->next;
       }
     }
 
