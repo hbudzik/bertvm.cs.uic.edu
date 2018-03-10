@@ -3,7 +3,7 @@
 #include <vector>
 #include <iostream>
 
-
+using namespace std;
 
 using std::vector;
 using std::cout;
@@ -68,7 +68,7 @@ class district
       NODE* prev = nullptr;
     };
     //vector storing all the members in this district by their IDs
-    vector<int> *distMembers = new vector<int>(2);
+    vector<int> *distMembers = new vector<int>(5);
 
   public:
     //initializes a class
@@ -76,6 +76,8 @@ class district
     {
       (debugg == true)  ? std::cout << "\t\tinit... district()\n" : cout << " ";      
       init();
+      //free memory from vector allocation
+      delete distMembers;
     }
 
     ~district()
@@ -88,12 +90,12 @@ class district
     
     //getters
 
-    int getPop()
+    int getPop() const
     {
       return distPop;
     }
 
-    vector<int> *memberList()
+    vector<int> *memberList()const
     {
       return distMembers;
     }
@@ -109,9 +111,12 @@ class district
         distPop++;
       }else{ //at least one node adds to the back
         (debugg == true)  ? std::cout << "\t\t\tcreating another member in a district\n" : cout << " ";
+        cout << "heya\n";
         push_back(ID);
+        cout << "heya\n";
         //updates distMembers with new id
         distMembers->push_back(ID);
+        cout << "heya\n";
         distPop++;
       }
     }
@@ -146,7 +151,7 @@ class district
       this->back = this->front;
       return;
     }
-
+    
     void push_back(int ID)
     {
         NODE* tmp = new NODE;
