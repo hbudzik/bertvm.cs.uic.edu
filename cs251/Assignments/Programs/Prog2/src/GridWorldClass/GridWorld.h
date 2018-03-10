@@ -3,7 +3,7 @@
 #include <vector>
 #include <iostream>
 
-using namespace std;
+
 
 using std::vector;
 using std::cout;
@@ -22,12 +22,12 @@ class person
     //initializes a class
     person()
     {
-      (debugg == true)  ? cout << "\tcreating a person\n" : cout << " ";
+      (debugg == true)  ? cout << "\tinit... person()\n" : cout << " ";
     }
 
     ~person()
     {
-      (debugg == true)  ? cout << "\tdestroing a person\n" : cout << " ";
+      (debugg == true)  ? cout << "\tinit... ~person()\n" : cout << " ";
     }
 
     //setter functions
@@ -38,17 +38,17 @@ class person
       alive = true;
     }
     //getter functions
-    int getRow()
+    int getRow() const
     {
       return r;
     }
 
-    int getCol()
+    int getCol() const
     {
       return c;
     }
 
-    void getAlive()
+    void getAlive() const
     {
       ( alive == true) ? cout << "Alive" << endl : cout << "Dead" << endl;
       return;
@@ -59,6 +59,8 @@ class person
 class district
 {
   private:
+    //counts members in current district
+    int distPop = 0;
     //Struct for members in the district
     struct NODE {
       int id;
@@ -66,45 +68,60 @@ class district
       NODE* prev = nullptr;
     };
     //vector storing all the members in this district by their IDs
-    vector<int> distMembers = vector<int>(2);
+    vector<int> *distMembers = new vector<int>(2);
 
   public:
     //initializes a class
     district()
     {
-      (debugg == true)  ? std::cout << "\t\tcreating a district\n" : cout << " ";
+      (debugg == true)  ? std::cout << "\t\tinit... district()\n" : cout << " ";      
       init();
     }
 
     ~district()
     {
-       if (this->front != nullptr){
-      (debugg == true) ? std::cout << "\t\t\t\tremoving member NODE\n" : cout << " ";
-      }
+      (debugg == true) ? std::cout << "\t\t\tinit... ~district\n" : cout << " ";
       clean();
     }
+
+    //setters 
+    
+    //getters
+
+    int getPop()
+    {
+      return distPop;
+    }
+
+    vector<int> *memberList()
+    {
+      return distMembers;
+    }
+   
 
     void createMember(int ID)
     {
       if (this->front == nullptr)  { //empty list
         (debugg == true)  ? std::cout << "\t\t\tcreating first member in a district\n" : cout << " ";
         push_front(ID);
-        //updates distMembers with new id
-        distMembers.push_back(ID);
+        //updates distMembers and distPopwith new id
+        distMembers->push_back(ID);
+        distPop++;
       }else{ //at least one node adds to the back
         (debugg == true)  ? std::cout << "\t\t\tcreating another member in a district\n" : cout << " ";
         push_back(ID);
         //updates distMembers with new id
-        distMembers.push_back(ID);
+        distMembers->push_back(ID);
+        distPop++;
       }
     }
 
+
   private:
-    //pointers for the front and back NODE of the DLL
     NODE* front;
     NODE* back;
-    int population = 0;   //current population in this district
-   //helper functions
+    
+
     void init()
     {
       front = nullptr;
@@ -112,8 +129,13 @@ class district
     }
 
     void clean(){
-       if (this->front != nullptr){
-      (debugg == true)  ? std::cout << "\t\t\t\tremoving member NODE\n" : cout << " ";
+      //traverse through the list and free memory
+      while(this->front != nullptr){
+        this->back = this->front;
+        this->front = this->front->next;
+
+        (debugg == true)  ? std::cout << "\t\t\t\tremoving member NODE\n" : cout << " ";
+        delete this->back;    //member node remove
       }
     }
 
@@ -126,7 +148,7 @@ class district
     }
 
     void push_back(int ID)
-      {
+    {
         NODE* tmp = new NODE;
         tmp->id = ID;
         tmp->prev = this->back;
@@ -135,7 +157,7 @@ class district
         //updating back pointer
         this->back = this->back->next;
         return;
-      }  
+    }
 };
 
 
@@ -159,42 +181,29 @@ class GridWorld : public GWInterface
   public:
     GridWorld(unsigned nrows, unsigned ncols)   {
 
-      (debugg == true)  ? std::cout << "calling.. GridWord::GridWorld(" << nrows << ", " << ncols << ")\n"
-      : std::cout << " ";
-
+      (debugg == true)  ? std::cout << "init... grid world(" << nrows << ", " << ncols << ")\n" : std::cout << " ";
       totR = nrows; //sets totR
       totC = ncols; //sets totC
-
       // creating a 2D array using nrows and ncols parameters
-
-      (debugg == true) ? std::cout << "\t- initializing arr[" << nrows << "][" << ncols << "]\n"
-      : std::cout << " ";
-
+      (debugg == true) ? std::cout << "\t- init... 2d array.\n" : std::cout << " ";
       //initializing grid
       world = new district* [nrows];
-
       for (int row = 0; row < nrows; row++)
       {
-        (debugg == true) ? std::cout << "\t- initialized \n" : std::cout << " ";
         world[row] = new district[ncols];
-
       }
     }
 
     ~GridWorld()
     {
-      (debugg == true)  ? std::cout << "\ncalling.. ~GridWord::GridWorld\n" : std::cout << " ";
-      (debugg == true)  ? std::cout << "\tdeleting grid[pointers]\n" : std::cout << " ";
+      (debugg == true)  ? std::cout << "\ninit... ~GridWord\n" : std::cout << " ";
+      (debugg == true)  ? std::cout << "\tdeleting districts\n" : std::cout << " ";
 
       // your destructor code here.
       for (int row = 0; row < totR; row++){
-      (debugg == true)  ? std::cout << "\t\tdeleting grid[" << row << "]\n" : std::cout << " ";
         delete [] world[row];
       }
-
-      (debugg == true)  ? std::cout << "\tdeleting grid\n" : std::cout << " ";
       delete world;
-      (debugg == true)  ? std::cout << "exiting.. ~GridWord::GridWorld\n" : std::cout << " ";
     }//end ~gridWorld
 
     bool birth(int row, int col, int &id){
@@ -222,7 +231,9 @@ class GridWorld : public GWInterface
     }
 
     bool whereis(int id, int &row, int &col)const{
-      return false;
+      row = people[id].getRow();
+      col = people[id].getCol();
+      return true;
     }
 
     bool move(int id, int targetRow, int targetCol){
@@ -231,9 +242,11 @@ class GridWorld : public GWInterface
 
 
     //returns the list of members living in that district(their IDs )
-    std::vector<int> * members(int row, int col)const{
-
-      return nullptr;
+    std::vector<int> * members(int row, int col)const
+    {
+      vector<int> * ret = world[row][col].memberList();
+     
+      return ret;
     }
 
     int population()const{
@@ -241,7 +254,8 @@ class GridWorld : public GWInterface
     }
 
     int population(int row, int col)const{
-      return 0;
+
+      return world[row][col].getPop();
     }
 
     int num_rows()const {
