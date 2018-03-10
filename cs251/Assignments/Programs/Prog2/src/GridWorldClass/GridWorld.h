@@ -78,9 +78,7 @@ class district
 
     ~district()
     {
-       if (this->front != nullptr){
-      (debugg == true) ? std::cout << "\t\t\t\tremoving member NODE\n" : cout << " ";
-      }
+      (debugg == true) ? std::cout << "\t\t\tinitializing... ~district()\n" : cout << " ";
       clean();
     }
 
@@ -112,8 +110,15 @@ class district
     }
 
     void clean(){
-       if (this->front != nullptr){
-      (debugg == true)  ? std::cout << "\t\t\t\tremoving member NODE\n" : cout << " ";
+      while(this->front != nullptr)
+      {
+        (debugg == true) ? std::cout << "\t\t\t\trm member NODE\n" : cout << " ";
+        this->back = this->front;
+        this->front = this->front->next;
+
+        delete this->back;
+
+
       }
     }
 
@@ -189,7 +194,7 @@ class GridWorld : public GWInterface
       // your destructor code here.
       for (int row = 0; row < totR; row++){
       (debugg == true)  ? std::cout << "\t\tdeleting grid[" << row << "]\n" : std::cout << " ";
-        delete world[row];
+        delete [] world[row];
       }
 
       (debugg == true)  ? std::cout << "\tdeleting grid\n" : std::cout << " ";
