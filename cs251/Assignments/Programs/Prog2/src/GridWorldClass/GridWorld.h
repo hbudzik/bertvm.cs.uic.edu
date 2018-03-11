@@ -8,7 +8,7 @@ using namespace std;
 using std::vector;
 using std::cout;
 using std::endl;
-bool debugg = false;
+
 
 
 class person
@@ -22,12 +22,12 @@ class person
     //initializes a class
     person()
     {
-      (debugg == true)  ? cout << "\tinit... person()\n" : cout << " ";
+      
     }
 
     ~person()
     {
-      (debugg == true)  ? cout << "\tinit... ~person()\n" : cout << " ";
+      
     }
 
     //setter functions
@@ -37,6 +37,22 @@ class person
       c = col;
       alive = true;
     }
+
+    void setDead(){
+      alive = false;
+      return;
+    }
+
+    void setRow(int row)
+    {
+      r = row;
+    }
+
+    void setCol(int col)
+    {
+      c = col;
+    }
+
     //getter functions
     int getRow() const
     {
@@ -48,7 +64,7 @@ class person
       return c;
     }
 
-    void getAlive() const
+    void setAlive() const
     {
       ( alive == true) ? cout << "Alive" << endl : cout << "Dead" << endl;
       return;
@@ -70,28 +86,41 @@ class district
     //vector storing all the members in this district by their IDs
 
     vector<int> *distMembers = new vector<int>();
+    
 
   public:
     //initializes a class
     district()
     {
-      (debugg == true)  ? std::cout << "\t\tinit... district()\n" : cout << " ";
       init();
     }
 
     ~district()
     {
-      (debugg == true) ? std::cout << "\t\t\tinit... ~district\n" : cout << " ";
       delete distMembers; //removes vector at the end
       clean();
     }
 
     //setters
- 
-
+    void rmVector(int id)
+    {
+       // erase the 6th element
+       for (unsigned i=0; i<distMembers->size(); i++)
+       {
+        if ( distMembers->at(i) == id){
+          distMembers->erase (distMembers->begin()+ i-1);
+        }
+       }
+    }
 
 
     //getters
+
+  
+    void rmPop()
+    {
+      distPop--;
+    }
 
     int getPop() const
     {
@@ -114,22 +143,30 @@ class district
       return;
     }
 
+    void rmNode(int id)
+    {
+      popNode(id);
+    }
+
     void createMember(int ID)
     {
       if (this->front == nullptr)  { //empty list
-        (debugg == true)  ? std::cout << "\t\t\tcreating first member in a district\n" : cout << " ";
         pushFront(ID);
         //updates distMembers and distPopwith new id
         addVector(ID);
         cout << "vectormember FIRST size: " << distMembers->size() << endl;
         distPop++;
       }else{ //at least one node adds to the back
-        (debugg == true)  ? std::cout << "\t\t\tcreating another member in a district\n" : cout << " ";
         addVector(ID);
         cout << "vectormember AFTER size: " << distMembers->size() << endl;
         //updates distMembers with new id
         distPop++;
       }
+    }
+
+    void addMember()
+    {
+
     }
 
 
@@ -149,8 +186,6 @@ class district
       while(this->front != nullptr){
         this->back = this->front;
         this->front = this->front->next;
-
-        (debugg == true)  ? std::cout << "\t\t\t\tremoving member NODE\n" : cout << " ";
         delete this->back;    //member node remove
       }
     }
@@ -175,6 +210,41 @@ class district
         return;
     }
 
+    void popNode(int id)
+    {
+      //first node
+      NODE* tmp;
+      NODE* p;
+        if (this->front->id == id)
+        {
+          tmp = this->front;
+          this->front = this->front->next;
+          delete tmp;
+          return;
+        }
+
+        //last node
+        if (this->back->id == id)
+        {
+          tmp = this->back;
+          this->back = this->back->prev;
+          delete tmp;
+          return;
+        }
+        
+        //in between 
+        p = this->front->next;
+        while(p != nullptr)
+        {
+          if (p->id == id)  //found the node
+            { 
+              p->prev->next = p->next;
+              p->next->prev = p->prev;
+              delete p;              
+            }
+          p = p->next;       
+        }
+    }
 };
 
 
@@ -182,6 +252,7 @@ class GridWorld : public GWInterface
 {
   private:
     district** world;
+    district deadpool;
     //   data members
       int totR;             //number of rows in the world
       int totC;             //number of columns in the world
@@ -197,12 +268,9 @@ class GridWorld : public GWInterface
 
   public:
     GridWorld(unsigned nrows, unsigned ncols)   {
-
-      (debugg == true)  ? std::cout << "init... grid world(" << nrows << ", " << ncols << ")\n" : std::cout << " ";
       totR = nrows; //sets totR
       totC = ncols; //sets totC
       // creating a 2D array using nrows and ncols parameters
-      (debugg == true) ? std::cout << "\t- init... 2d array.\n" : std::cout << " ";
       //initializing grid
       world = new district* [nrows];
       for (int row = 0; row < nrows; row++)
@@ -213,9 +281,6 @@ class GridWorld : public GWInterface
 
     ~GridWorld()
     {
-      (debugg == true)  ? std::cout << "\ninit... ~GridWord\n" : std::cout << " ";
-      (debugg == true)  ? std::cout << "\tdeleting districts\n" : std::cout << " ";
-
       // your destructor code here.
       for (int row = 0; row < totR; row++){
         delete [] world[row];
@@ -229,22 +294,29 @@ class GridWorld : public GWInterface
       id = IDbookeeping;
       //checks people vector and resizes if necessery
         pplVectReSize(IDbookeeping);
-        (debugg == true)  ? std::cout << "size of vector<people>: " << people.size() << endl : cout << " ";
       //adding a person to the world
         personAdd(row, col, IDbookeeping);
-        (debugg == true) ? std::cout << " \t\t\t\tID <" << IDbookeeping << "> row: " << people[IDbookeeping].getRow() << endl : std::cout << " ";
-        (debugg == true) ? std::cout << " \t\t\t\tID <" << IDbookeeping << "> col: " << people[IDbookeeping].getCol() << endl : std::cout << " ";
-        (debugg == true) ? std::cout << " \t\t\t\tID <" << IDbookeeping << "> is: " : std::cout << " ";
-        if (debugg == true){ people[IDbookeeping].getAlive(); }
         //updates total population an ID in the world
         totPopulation++;
         IDbookeeping++;
       return true;
     }
 
-    bool death(int personID){
+    bool death(int personID){                                                   //(99999999999999999)
+      totPopulation--;
 
-      return false;
+      int origRow = people[personID].getRow();
+      int origCol = people[personID].getCol();  
+      world[origRow][origCol].rmPop();                     
+      //changes status to dead
+      people[personID].setDead();
+      //removing member
+      world[origRow][origCol].rmVector(personID);
+       //moving to deadpool
+             
+      world[origRow][origCol].rmNode(personID);
+
+      return true;
     }
 
     bool whereis(int id, int &row, int &col)const{
@@ -254,7 +326,24 @@ class GridWorld : public GWInterface
     }
 
     bool move(int id, int targetRow, int targetCol){
-      return false;
+      //setting person first
+      int origRow = people[id].getRow();
+      int origCol = people[id].getCol();
+
+      people[id].setRow(targetRow);
+      people[id].setCol(targetCol);
+
+      //moving the node
+      personMove(targetRow, targetCol, id);
+      
+      //deleting old node
+      world[origRow][origCol].rmNode(id);
+      //removing member
+      world[origRow][origCol].rmVector(id);
+     
+
+
+      return true;
     }
 
 
@@ -266,7 +355,7 @@ class GridWorld : public GWInterface
       for (int d : *tmp)
       {
         ret->push_back(d);
-      }                                                                     //vector * members STOP
+      }                                                                   
       return ret;
     }
 
@@ -300,6 +389,12 @@ class GridWorld : public GWInterface
     void personAdd(int row, int col, int IDbookeeping)
     {
       people[IDbookeeping].createPerson(row, col);          //adds to people ADT
+      world[row][col].createMember(IDbookeeping);           //adds to district ADT
+      return;
+    }
+
+    void personMove(int row, int col, int IDbookeeping)
+    {
       world[row][col].createMember(IDbookeeping);           //adds to district ADT
       return;
     }

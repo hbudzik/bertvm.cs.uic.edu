@@ -187,15 +187,7 @@ CmdResult eval_cmd(GWInterface *gw, const string &cmd, int args[], int nargs) {
  *  arguments specifying the grid dimensions?
  */
 int main(int argc, char** argv){
-  //checks for debugg option 
-  if (argc >= 2){
-  if (argv[1][0] == '-' && argv[1][1] == 'd'){
-    debugg = true;
-  }
-  }
-
-(debugg == true) ? cout << "debugg is ON \n" : cout << "debugg is OFF \n";
-
+  
   GWInterface *gw = new GridWorld(3, 3);
   string line;
 
