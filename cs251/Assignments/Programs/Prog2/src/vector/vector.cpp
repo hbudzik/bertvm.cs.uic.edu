@@ -4,7 +4,11 @@
 using namespace std;
 
 int main(){
-
+	vector<int> *d;
+if (int z : d)
+	{
+		cout << "Z: " << z << endl;
+	}
 	vector<int> list(3);	
 
 //prints out the vectobreak;

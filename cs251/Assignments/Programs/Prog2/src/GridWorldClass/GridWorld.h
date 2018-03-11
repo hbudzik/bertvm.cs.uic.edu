@@ -87,6 +87,9 @@ class district
     }
 
     //setters
+ 
+
+
 
     //getters
 
@@ -95,9 +98,14 @@ class district
       return distPop;
     }
 
-    vector<int> *memberList()const
+    vector<int> *memberList()                                             //vector<int> *memberList
     {
       return distMembers;
+    }
+
+    int vectorSize() const                                             //vector<int> *memberList
+    {
+      return distMembers->size();
     }
 
     void addVector(int x) const
@@ -113,12 +121,12 @@ class district
         pushFront(ID);
         //updates distMembers and distPopwith new id
         addVector(ID);
-        cout << "vectormember size: " << distMembers->size() << endl;
+        cout << "vectormember FIRST size: " << distMembers->size() << endl;
         distPop++;
       }else{ //at least one node adds to the back
         (debugg == true)  ? std::cout << "\t\t\tcreating another member in a district\n" : cout << " ";
         addVector(ID);
-        cout << "vectormember size: " << distMembers->size() << endl;
+        cout << "vectormember AFTER size: " << distMembers->size() << endl;
         //updates distMembers with new id
         distPop++;
       }
@@ -253,17 +261,23 @@ class GridWorld : public GWInterface
     //returns the list of members living in that district(their IDs )
     std::vector<int> * members(int row, int col)const
     {
-      vector<int> * ret = world[row][col].memberList();
-
+      vector<int> * tmp = world[row][col].memberList();
+      vector<int> * ret = new vector<int>(); 
+      for (int d : *tmp)
+      {
+        ret->push_back(d);
+      }                                                                     //vector * members STOP
       return ret;
     }
 
     int population()const{
+      vector<int> * ret = world[1][1].memberList();
+      cout << "ret size: " << ret->size() << endl;     
       return totPopulation;
     }
 
     int population(int row, int col)const{
-
+  
       return world[row][col].getPop();
     }
 
