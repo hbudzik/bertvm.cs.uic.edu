@@ -69,7 +69,7 @@ class district
     };
     //vector storing all the members in this district by their IDs
 
-    vector<int> *distMembers = new vector<int>(5);
+    vector<int> *distMembers = new vector<int>();
 
   public:
     //initializes a class
@@ -77,13 +77,12 @@ class district
     {
       (debugg == true)  ? std::cout << "\t\tinit... district()\n" : cout << " ";
       init();
-      //free memory from vector allocation
-      delete distMembers;
     }
 
     ~district()
     {
       (debugg == true) ? std::cout << "\t\t\tinit... ~district\n" : cout << " ";
+      delete distMembers;
       clean();
     }
 
@@ -101,23 +100,27 @@ class district
       return distMembers;
     }
 
+    void addVector(int x) const
+    {
+      distMembers->push_back(x);
+      return;
+    }
 
     void createMember(int ID)
     {
       if (this->front == nullptr)  { //empty list
         (debugg == true)  ? std::cout << "\t\t\tcreating first member in a district\n" : cout << " ";
-        push_front(ID);
+        pushFront(ID);
         //updates distMembers and distPopwith new id
-        distMembers->push_back(ID);
+        addVector(ID);
+        cout << "vectormember size: " << distMembers->size() << endl;
         distPop++;
       }else{ //at least one node adds to the back
         (debugg == true)  ? std::cout << "\t\t\tcreating another member in a district\n" : cout << " ";
-        cout << "heya\n";
-        push_back(ID);
-        cout << "heya\n";
+        addVector(ID);
+        cout << "vectormember size: " << distMembers->size() << endl;
         //updates distMembers with new id
         distMembers->push_back(ID);
-        cout << "heya\n";
         distPop++;
       }
     }
@@ -145,7 +148,7 @@ class district
       }
     }
 
-    void push_front(int ID)
+    void pushFront(int ID)
     {
       this->front = new NODE;
       this->front->id = ID;
@@ -153,7 +156,7 @@ class district
       return;
     }
 
-    void push_back(int ID)
+    void pushBack(int ID)
     {
         NODE* tmp = new NODE;
         tmp->id = ID;
