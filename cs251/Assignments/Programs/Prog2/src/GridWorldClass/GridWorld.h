@@ -82,7 +82,7 @@ class district
     ~district()
     {
       (debugg == true) ? std::cout << "\t\t\tinit... ~district\n" : cout << " ";
-      delete distMembers;
+      delete distMembers; //removes vector at the end
       clean();
     }
 
@@ -120,7 +120,6 @@ class district
         addVector(ID);
         cout << "vectormember size: " << distMembers->size() << endl;
         //updates distMembers with new id
-        distMembers->push_back(ID);
         distPop++;
       }
     }
