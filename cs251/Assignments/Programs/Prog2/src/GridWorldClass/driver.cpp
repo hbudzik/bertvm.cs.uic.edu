@@ -243,6 +243,5 @@ int main(int argc, char** argv){
   } while(!done && !cin.eof());
 
   delete gw;
-  (debugg == true) ? cout << "\n*** DONE ***\n" : cout << "";
   return 0;
 }
