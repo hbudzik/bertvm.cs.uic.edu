@@ -1,16 +1,19 @@
-debugg is OFFWelcome to the GridWorld Interactive Frontend
-=============================================
-COMMANDS:
+birth 1 1
+birth 1 1
+birth 1 1
+birth 1 1
+birth 1 1
+birth 1 1
+birth 1 1
+birth 1 1
+birth 1 1
+birth 1 1
 
-    birth <row> <col>
-    death <id>
-    move <id> <targe-row> <target-col>
-    members <row> <col>
-    whereis <id> 
-    population 
-    population <row> <col>
-    num_rows
-    num_cols
-    quit
-
-cmd> 
+birth 2 2
+birth 2 2
+birth 2 2
+birth 2 2
+birth 2 2
+birth 2 2
+birth 2 2
+birth 2 2
