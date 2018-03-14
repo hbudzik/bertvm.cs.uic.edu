@@ -243,5 +243,9 @@ int main(int argc, char** argv){
   } while(!done && !cin.eof());
 
   delete gw;
+<<<<<<< HEAD
+=======
+  
+>>>>>>> 275244c002cf89a33e079e81557f8cd284db9181
   return 0;
 }
