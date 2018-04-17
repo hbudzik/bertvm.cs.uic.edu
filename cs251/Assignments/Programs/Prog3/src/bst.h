@@ -12,6 +12,9 @@ class bst {
       T      val;
       bst_node *left;
       bst_node *right;
+      //book keeping 
+      int leftCount = 0; 
+      int rightCount = 0;
 
       bst_node ( const T & _val = T{}, bst_node * l = nullptr, bst_node *r = nullptr)
         : val { _val },  left { l }, right {r} 
@@ -24,6 +27,48 @@ class bst {
     // constructor:  initializes an empty tree
     bst(){
       root = nullptr;
+      tSize = 0;
+      tmax = 0;
+      tmax = 0;
+      
+    }
+
+    void settSize(int x){
+      tSize = x;
+    }
+
+    int gettSize(){
+      return tSize;
+    }
+
+    int setMax(int x){
+      tmax = x;
+    }
+
+    void setMin(int x){
+      tmin = x;
+    }
+
+    int getMax(){
+      return tmax;
+    }
+
+    int getMin(){
+      return tmin;
+    }
+
+    int getLeftCount()
+    {
+      return root->leftCount;
+    }
+    
+    int getRightCount()
+    {
+      std::cout << "\n";
+       std::cout << root->val << root->rightCount;
+       std::cout << "\n";
+      return root->rightCount;
+     
     }
 
   private:
@@ -39,6 +84,9 @@ class bst {
   public:
     // destructor
     ~bst() {
+
+      std::cout << "\ncalling destructor... \n\tremoving newvector, root->nodes->all\n";
+      delete newvector;
       delete_nodes(root);
     }
 
@@ -56,19 +104,29 @@ class bst {
     static bst_node * _insert(bst_node *r, T & x, bool &success){
       if(r == nullptr){
         success = true;
+        
+
+
         return new bst_node(x, nullptr, nullptr);
       }
 
+      //could use counter here to add repeting nodes 
       if(r->val == x){
+       
         success = false;
         return r;
       }
+
       if(x < r->val){
         r->left = _insert(r->left, x, success);
+        r->leftCount++;   //bookkeeping 
+        
         return r;
       }
       else {
-        r->right = _insert(r->right, x, success);
+        r->right = _insert(r->right, x, success); 
+        r->rightCount++;  //bookkeeping 
+       
         return r;
       }
     }
@@ -88,6 +146,21 @@ class bst {
    bool insert(T & x){
       bool success;
       root = _insert(root, x, success);
+      
+      if (success == false)
+        {
+          return false;
+        }else{
+          tSize++;
+        }
+
+      if (x > tmax){
+              tmax = x;
+      }
+
+      if (x < tmin) {
+        tmin = x;
+      }
       return success;
    }
 
@@ -125,7 +198,7 @@ class bst {
     }
 
     // returns pointer to node containing
-    //   smallest value in tree rooted at r
+    //   greater value in tree rooted at r
     static bst_node * _max_node(bst_node *r ){
       if(r==nullptr)
         return nullptr; // should never happen!
@@ -166,9 +239,11 @@ class bst {
       }
       if(x < r->val){
         r->left = _remove(r->left, x, success);
+        r->leftCount--;  //bookkeeping
       }
       else {
         r->right = _remove(r->right, x, success);
+        r->rightCount--;   //bookkeeping
       }
       return r;
 
@@ -207,6 +282,14 @@ class bst {
       return 1 + (l_h > r_h ? l_h : r_h);
     }
 
+  //helper functions start here ....                                          HELPER FUNCTIONS
+    void _to_vector(bst_node *r, std::vector<T> *newvector){
+      if(r==nullptr) return;
+      _to_vector(r->left, newvector);
+      newvector->push_back(r->val);
+      _to_vector(r->right, newvector);
+    }
+
   public:
 
     int height() {
@@ -225,7 +308,8 @@ class bst {
       return _max_node(root)->val;
     }
 
-    /******************************************
+
+    /**************************************************************************todo...
      *
      * "stubs" for assigned TODO functions below 
      *
@@ -233,7 +317,10 @@ class bst {
 
     // TODO
     std::vector<T> * to_vector() {
-      return nullptr;
+      std::vector<T> *newvector = new std::vector<T>;   //new vector 
+    //calls hepler function
+      _to_vector(root, newvector);
+    return newvector;
     }
 
 
@@ -274,7 +361,15 @@ class bst {
      * Runtime:  O(h) where h is the tree height
      */
     int num_geq(const T & x) {
-      return 0;  // placeholder
+      int total = 0;
+	    if(x > tmax)
+		    return 0;
+
+    	if(x <= tmin)
+		    return tSize;
+
+    	_num_geq(root, x, total); //placeholder
+      return total;
     }
 
     /*
@@ -296,7 +391,15 @@ class bst {
      *
      **/
     int num_leq(const T &x) {
-      return 0;  // placeholder
+       int total = 0;
+	    if(x < tmax)
+		    return 0;
+
+    	if(x >= tmin)
+		    return tSize;
+
+    	_num_leq(root, x, total); //placeholder
+      return total;
     }
 
     /*
@@ -347,6 +450,26 @@ class bst {
       _get_ith_SLOW(t->right, i, x, sofar);
     }
 
+    void _num_geq(bst_node *t, const T & x, int & total) {
+      //base case 
+      if(t == nullptr) return;
+      
+      
+      if(t->val == x){
+        total++;
+        return _num_geq(t->right, x, total);
+      }
+
+      if(t->val > x) {
+        total += t->rightCount + 1;
+       
+        return _num_geq(t->left, x, total);
+      }else{
+        return _num_geq(t->right, x, total);
+      }
+    }
+
+
     static int _num_geq_SLOW(bst_node * t, const T & x) {
       int total;
 
@@ -356,6 +479,25 @@ class bst {
       if(t->val >= x)
         total++;
       return total;
+    }
+
+    void _num_leq(bst_node *t, const T & x, int & total) {
+      //base case 
+      if(t == nullptr) return;
+      
+      
+      if(t->val == x){
+        total++;
+        return _num_geq(t->left, x, total);
+      }
+
+      if(t->val < x) {
+        total += t->leftCount + 1;
+       
+        return _num_leq(t->right, x, total);
+      }else{
+        return _num_leq(t->left, x, total);
+      }
     }
 
     static int _num_leq_SLOW(bst_node *t, const T &x) {
@@ -481,8 +623,8 @@ class bst {
 
       std::cout << "\n     WARNING:  bst::num_leaves UNIMPLEMENTED...\n";
       return 0;
+      
     }
-
     // TODO:  num_at_level
     // description:  returns the number of nodes at specified level
     //   in tree.
@@ -496,8 +638,15 @@ class bst {
 
 
   private:
+  
     bst_node *root;
+    int tSize; //number of nodes in a tree
+    int tmax;
+    int tmin;
+   
+    std::vector<T> *newvector = new std::vector<T>;
 
+ 
 
 }; // end class bst
 
