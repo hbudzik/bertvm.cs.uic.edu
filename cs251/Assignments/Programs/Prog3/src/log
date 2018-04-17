@@ -1,37 +1,19 @@
-
+contains truecontains true
 ======== BEGIN INORDER ============
-[ 11 ]
-[ 17 ]
-[ 19 ]
-[ 22 ]
-[ 26 ]
-[ 33 ]
-[ 88 ]
-[ 91 ]
-[ 111 ]
+[ 30 ]
+[ 50 ]
+[ 60 ]
 
 ========  END INORDER  ============
 
 ======== BEGIN PREORDER ============
-[ 111 ]
----[ 22 ]
-------[ 17 ]
----------[ 11 ]
------------- nullptr 
------------- nullptr 
----------[ 19 ]
------------- nullptr 
------------- nullptr 
-------[ 88 ]
----------[ 33 ]
-------------[ 26 ]
---------------- nullptr 
---------------- nullptr 
------------- nullptr 
----------[ 91 ]
------------- nullptr 
------------- nullptr 
---- nullptr 
+[ 50 ]
+---[ 30 ]
+------ nullptr 
+------ nullptr 
+---[ 60 ]
+------ nullptr 
+------ nullptr 
 
 ========  END PREORDER  ============
 
@@ -41,24 +23,24 @@
 
 ========  END POSTORDER  ============
 
-#### Reported height of tree:   4
+#### Reported height of tree:   1
 
      WARNING:  bst::num_leaves UNIMPLEMENTED...
 
 #### Reported number of leaves:   0
 
-new vector size: 9checking bookkeeping.. 
-leftCount: 9
-1110
+new vector size: 3checking bookkeeping.. 
+leftCount: 1
+501
 
-rightCount: 0
-tmax: 111
-tmin: 11
-tSize: 9
+rightCount: 1
+tmax: 60
+tmin: 30
+tSize: 3
 
-contains: 22: 1
-geq 22: 6
-leq 22: 0
+contains: 110: 0
+geq 110: 0
+leq 110: 3
 
 calling destructor... 
 	removing newvector, root->nodes->all

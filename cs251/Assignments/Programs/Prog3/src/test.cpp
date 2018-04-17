@@ -36,7 +36,7 @@ int main(){
     std::cout << "\ntSize: " << t->gettSize();
 
     std::cout << "\n";
-    int nodevalue = 22;
+    int nodevalue = 110;
     std::cout << "\ncontains: " << nodevalue; std::cout << ": " << t->contains(nodevalue);
     std::cout <<"\ngeq " << nodevalue; std::cout << ": " << t->num_geq(nodevalue);
     std::cout <<"\nleq " << nodevalue; std::cout << ": " << t->num_leq(nodevalue);

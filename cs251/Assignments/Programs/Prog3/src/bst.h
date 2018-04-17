@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <limits.h>
 
 template <typename T>
 class bst {
@@ -28,8 +29,8 @@ class bst {
     bst(){
       root = nullptr;
       tSize = 0;
-      tmax = 0;
-      tmax = 0;
+      tmax = INT_MIN;
+      tmin = INT_MAX;
       
     }
 
@@ -145,6 +146,12 @@ class bst {
    */
    bool insert(T & x){
       bool success;
+      //checks if already in the node
+      if (contains(x) == true){
+        std::cout << "contains true";
+        return false;
+      }
+
       root = _insert(root, x, success);
       
       if (success == false)
@@ -254,7 +261,26 @@ class bst {
     bool remove(T & x){
       bool success;
       root = _remove(root, x, success);
-      return success;
+
+      if (success == false)
+        {
+          return false;
+        }else{
+          tSize--;
+          
+            if (x == tmax){
+              tmax = _max_node(root );
+            }
+
+            if (x == tmin) {
+              tmin = _min_node(root );
+            }
+        }
+    
+
+    return success;
+
+
     }
 
 
@@ -392,10 +418,10 @@ class bst {
      **/
     int num_leq(const T &x) {
        int total = 0;
-	    if(x < tmax)
+	    if(x < tmin)
 		    return 0;
 
-    	if(x >= tmin)
+    	if(x >= tmax)
 		    return tSize;
 
     	_num_leq(root, x, total); //placeholder
