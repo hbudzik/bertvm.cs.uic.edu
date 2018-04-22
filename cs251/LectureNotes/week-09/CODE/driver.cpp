@@ -16,6 +16,7 @@ int main(int argc, char** argv)
             }
 
   //inserts target into binary search tree
+  target = 5;
 
 
   //checks if list contains target
