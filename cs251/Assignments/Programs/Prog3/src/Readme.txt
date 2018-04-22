@@ -1,7 +1,7 @@
 
 
 
-Name:
+Name: hubert budzik
 
 -----------------------------------------------
 
@@ -9,7 +9,7 @@ Please confirm that you compiled your solution with test cases exercising ALL
 functions using g++ -std=c++11.  Confirm this statement by typing YES below.
 (If you did not do this, compilation errors may result in an overall grade of
 zero!)
-
+yes
 
 
 
@@ -19,6 +19,12 @@ Describe what augmentations to the bst data structures you made to complete the
 project -- i.e., what types / data members did you change and why?
 
 
+i modified my bst class and added few new variables:
+int size:	to keep measure the size of my bst
+int min and int max: 	to keep minimum and maximum elements of my bst
+
+int my bsd_node struct i added two new variables
+int leftCount and int rightCount	: they contain number of children on the left side of the tree and on the right side 
 
 
 
@@ -28,9 +34,10 @@ project -- i.e., what types / data members did you change and why?
 Which functions did you need to modify as a result of the augmentations from the previous
 question?  
 
-
-
-
+bool insert(T & x)
+static bst_node * _insert(bst_node *r, T & x, bool &success)
+bool remove(T & x)
+static bst_node * _remove(bst_node *r, T & x, bool &success)
 
 
 
@@ -39,6 +46,7 @@ question?
 -----------------------------------------------
 For each function from the previous question, how did you ensure that the (assymptotic) runtime 
 remained the same?
+
 
 
 
@@ -61,32 +69,32 @@ answer the given questions.
 5:  finished and confident on correctness and runtime requirements
 
 
-to_vector level of completion:  ___________  
+to_vector level of completion:  ______1_____  
 
 
 -----------------------------------------------
-get_ith level of completion:  ___________  
+get_ith level of completion:  _______1____  
 
     How did you ensure O(h) runtime?
 
     ANSWER:
 
 -----------------------------------------------
-num_geq level of completion:  ___________  
+num_geq level of completion:  _______5____  
 
     How did you ensure O(h) runtime?
 
     ANSWER:
 
 -----------------------------------------------
-num_leq level of completion:  ____________
+num_leq level of completion:  _______5_____
 
     How did you ensure O(h) runtime?
 
     ANSWER:
 
 -----------------------------------------------
-num_range level of completion:  ____________
+num_range level of completion:  _____1_______
 
     How did you ensure O(h) runtime?
 
@@ -96,7 +104,7 @@ num_range level of completion:  ____________
 Implementation of size-balanced criteria according to 
 the given guidelines (including bst_sb_work):
 
-    Level of completion: ___________
+    Level of completion: ____1_______
 
 
 Write a few sentences describing how you tested your solutions.  Are there

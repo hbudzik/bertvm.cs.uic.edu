@@ -1,0 +1,46 @@
+contains truecontains true
+======== BEGIN INORDER ============
+[ 30 ]
+[ 50 ]
+[ 60 ]
+
+========  END INORDER  ============
+
+======== BEGIN PREORDER ============
+[ 50 ]
+---[ 30 ]
+------ nullptr 
+------ nullptr 
+---[ 60 ]
+------ nullptr 
+------ nullptr 
+
+========  END PREORDER  ============
+
+======== BEGIN POSTORDER ============
+
+   WARNING:  POSTORDER UNIMPLEMENTED...
+
+========  END POSTORDER  ============
+
+#### Reported height of tree:   1
+
+     WARNING:  bst::num_leaves UNIMPLEMENTED...
+
+#### Reported number of leaves:   0
+
+new vector size: 3checking bookkeeping.. 
+leftCount: 1
+501
+
+rightCount: 1
+tmax: 60
+tmin: 30
+tSize: 3
+
+contains: 110: 0
+geq 110: 0
+leq 110: 3
+
+calling destructor... 
+	removing newvector, root->nodes->all
